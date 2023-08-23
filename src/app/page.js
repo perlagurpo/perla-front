@@ -5,7 +5,7 @@ import LandingScene from '@/components/home/three/LandingScene';
 
 export default function Home() {
   return (
-    <main className='min-h-screen min-w-screen bg-white'>
+    <main className='min-h-screen min-w-screen bg-white font-[made-tommy-regular]'>
       {/*
         Este div es el contenedor del canvas. El canvas abstrae la implementación de la cámara y la escena de base.
         Para ajustar el tamaño del canvas basta con manejar el tamaño del div contenedor.
@@ -16,7 +16,7 @@ export default function Home() {
          * se puede usar una página de loading de Next.
          */}
         <Suspense fallback={<h2>Cargando</h2>}>
-          <Canvas >
+          <Canvas orthographic={true} camera={{ zoom: 90 }}>
             <LandingScene />
           </Canvas>
         </Suspense>

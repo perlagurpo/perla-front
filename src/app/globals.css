@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+  @font-face {
+    font-family: 'made-tommy-thin';
+    src: url('/fonts/made_tommy_soft/mt_Soft_Thin_PERSONAL_USE.otf');
+  }
+  
+  @font-face {
+    font-family: 'made-tommy-light';
+    src: url('/fonts/made_tommy_soft/mt_Soft_Light_PERSONAL_USE.otf');
+  }
+  
+  @font-face {
+    font-family: 'made-tommy-regular';
+    src: url('/fonts/made_tommy_soft/mt_Soft_Regular_PERSONAL_USE.otf');
+  }
+  
+  @font-face {
+    font-family: 'made-tommy-medium';
+    src: url('/fonts/made_tommy_soft/mts_Medium.otf');
+  }
+  
+  @font-face {
+    font-family: 'made-tommy-bold';
+    src: url('/fonts/made_tommy_soft/mt_Soft_Bold_PERSONAL_USE.otf');
+  }
+  
+  @font-face {
+    font-family: 'made-tommy-extrabold';
+    src: url('/fonts/made_tommy_soft/mt_Soft_ExtraBold_PERSONAL_USE.otf');
+  }
+
+  @font-face {
+    font-family: 'made-tommy-black';
+    src: url('/fonts/made_tommy_soft/mt_Soft_Black_PERSONAL_USE.otf');
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

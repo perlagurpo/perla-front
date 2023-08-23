@@ -4,7 +4,7 @@ function PageThree(){
 
   return(
     <>
-      <mesh position={[0,-10,0]}>
+      <mesh position={[-4,-10,0]}>
         <boxGeometry />
         <meshPhongMaterial color={'#FFdce5'} />
       </mesh>
