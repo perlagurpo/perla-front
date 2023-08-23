@@ -3,11 +3,11 @@ import { Text } from '@react-three/drei';
 function PageTwo(){
     return(
       <>
-        <mesh position={[-4,-5,0]}>
+        <mesh position={[-4,0,0]}>
           <sphereGeometry />
-          <meshPhongMaterial />
+          <meshPhongMaterial color='aquamarine' />
         </mesh>
-        <Text position={[2.5, -5, 0]}
+        <Text position={[2.5, 0, 0]}
               color="black" anchorX="center" anchorY="middle" fontSize={0.4}>
           desarrolla proyectos
           
