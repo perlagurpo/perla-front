@@ -3,7 +3,7 @@ import { Text, useGLTF, OrbitControls } from '@react-three/drei'
 
 function PageOne(){
 
-    const pearl = useGLTF('./pearl/source/pearl3.GLTF')
+    const pearl = useGLTF('/pearl/source/pearl3.gltf')
     
     return(
       <>
