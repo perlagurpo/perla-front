@@ -40,7 +40,6 @@ export default function ContactForm() {
     response.ok ? alert("Mensaje enviado exitosamente") : alert("Intento fallido");
   }
 
-
   return(
     <div>
       <form onSubmit={handleSubmit}>
@@ -56,6 +55,7 @@ export default function ContactForm() {
                 maxLength={50}
                 value={values.name}
                 onChange={handleChange}
+                className="text-black"
                 />
           </div>
           <div className="flex flex-row gap-4">
@@ -69,6 +69,7 @@ export default function ContactForm() {
                 minLength={4}
                 value={values.email}
                 onChange={handleChange}
+                className="text-black"
                 />
           </div>
           <div className="flex flex-row gap-4 w-full text-black">
@@ -84,7 +85,7 @@ export default function ContactForm() {
                 className="w-full p-2"
                 />
           </div>
-          <button type="submit">send</button>
+          <button type="submit" className="bg-perla-primary text-white px-4 py-2">send</button>
         </div>
       </form>
     </div>
