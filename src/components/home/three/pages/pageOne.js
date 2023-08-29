@@ -1,17 +1,21 @@
-import { Text } from '@react-three/drei'
+import { Text, useGLTF, OrbitControls } from '@react-three/drei'
+
 
 function PageOne(){
+
+    const pearl = useGLTF('./pearl/source/pearl3.GLTF')
+    
     return(
-      <group>
-        <mesh position={[-4,0,0]} rotation={[3,5,7]}>
-          <boxGeometry />
-          <meshStandardMaterial color='aquamarine' />
-        </mesh>
-        <Text position={[2.5, 0, 0]}
-              color="black" anchorX="center" anchorY="middle" fontSize={0.4}>
-          Perla-Labs
-        </Text>
-      </group>
+      <>
+        {/* <OrbitControls makeDefault />  */}
+        <primitive 
+          object={ pearl.scene }
+          scale={ 3 }
+          position={ [ 0, -3, -4 ] }
+          rotation-y={ 5 }
+        />
+        <Text className="font-['made-tommy-regular']" position={[-3,-3,0]}> Grupo Perla Software </Text>
+    </>
     );
   }
 
