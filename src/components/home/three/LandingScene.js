@@ -1,36 +1,20 @@
 'use client';
 import React from 'react';
 import { ScrollControls, Scroll } from '@react-three/drei';
-import PageOne from './pages/pageOne';
-import PageTwo from './pages/pageTwo';
-import PageThree from './pages/pageThree';
+import PearlHero from './pages/pearlScene';
 import SectionWrapper from './pages/sectionWrapper';
 
-
+/**
+ * Escena del Hero con perla animada 
+ */
 function Scene(){
   return(
     <>
       <Lights />
-      <ScrollControls pages={3} distance={0.5}>
-
-        <Scroll>
-          <SectionWrapper yOffset={0}>
-            <PageOne />
-          </SectionWrapper>
-        </Scroll>
-
-        <Scroll>
-          <SectionWrapper yOffset={-6}>
-            <PageTwo />
-          </SectionWrapper>
-        </Scroll>
-
-        <Scroll>
-          <SectionWrapper yOffset={-12}>
-            <PageThree />
-          </SectionWrapper>
-        </Scroll>
-        
+      <ScrollControls pages={5} distance={0.5}>      
+        <SectionWrapper yOffset={-3.5}>
+          <PearlHero />
+        </SectionWrapper>     
       </ScrollControls>
     </>
   );

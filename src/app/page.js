@@ -10,7 +10,7 @@ export default function Home() {
         Este div es el contenedor del canvas. El canvas abstrae la implementación de la cámara y la escena de base.
         Para ajustar el tamaño del canvas basta con manejar el tamaño del div contenedor.
       */}
-      <div className='h-screen w-screen bg-white'>
+      <div className='h-screen max-w-full bg-white'>
         {/**
          * Dejo un Suspense de React para mostrar un mensaje mientras se carga el Canvas. Creo que también
          * se puede usar una página de loading de Next.
@@ -18,6 +18,7 @@ export default function Home() {
         <Suspense fallback={<h2>Cargando</h2>}>
           <Canvas orthographic={true} camera={{ zoom: 90 }}>
             <LandingScene />
+            <axesHelper />
           </Canvas>
         </Suspense>
       </div>
