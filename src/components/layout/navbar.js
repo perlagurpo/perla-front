@@ -10,7 +10,7 @@ export default function Navbar() {
     <nav className="flex flex-col bg-perla-fullBlack dark:perla-fullBlack font-['made-tommy-regular'] items-center">
       <div className="min-w-full flex flex-wrap items-center justify-between py-4 md:px-[5em] lg:px-[12em]  ">
         <Link href="/" className="flex items-center">
-            <img src="/img/perla.png" className="h-10 mr-3" alt="Perla Labs" />
+          <img src="/img/perla.png" className="h-10 px-6" alt="Perla Labs" />
         </Link>
         <button onClick={() => setMenuOpened(!menuOpened)}
                 type="button" 
