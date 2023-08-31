@@ -6,40 +6,41 @@ import { animated, useSpring } from '@react-spring/three';
 import * as THREE from 'three';
 
 function PearlHero(){
-    const scroll = useScroll();
-    const pearl = useGLTF('/pearl/source/pearl3.gltf');
-    const pearlRef = useRef();
-    const groupRef = useRef();
-    var prevScroll = scroll.scroll.current;
+  const scroll = useScroll();
+  const pearl = useGLTF('/pearl/source/pearl3.gltf');
+  const pearlRef = useRef();
+  const groupRef = useRef();
+  var prevScroll = scroll.scroll.current;
 
-    useFrame(
-      () => {
-        groupRef.current.position.x = -scroll.scroll.current * 15;
-        groupRef.current.position.y = Math.sin(scroll.scroll.current) * 0.5;
-        const scrollDelta = scroll.scroll.current - prevScroll;
-        if(scrollDelta > 0 ) {
-          pearlRef.current.rotation.y += 0.1;
-        }
-        prevScroll = scroll.scroll.current;
+  useFrame(
+    (state, delta) => {
+      groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, -scroll.scroll.current * 15, 2, delta);
+      // groupRef.current.position.y = Math.sin(scroll.scroll.current) * 0.5;
+      const scrollDelta = scroll.scroll.current - prevScroll;
+      if(scrollDelta > 0 ) {
+        const rotationY = pearlRef.current.rotation.y;
+        pearlRef.current.rotation.y = THREE.MathUtils.damp(rotationY, rotationY + 10, 1, delta);
       }
-    );
-       
-    return(
-      <group ref={groupRef}>
-        {/* <OrbitControls makeDefault />  */}
-        <ControlesRotacion>
-          <primitive
-            object={ pearl.scene }
-            ref={pearlRef}
-            scale={ 3 }
-            position={ [ 0, 0, 0 ] }
-            // rotation-y={ 5 }
-          />
-        </ControlesRotacion>
-        <Text className="font-['made-tommy-regular']" position={[-3,-3,0]}> Grupo Perla Software </Text>
-      </group>
-    );
-  }
+      prevScroll = scroll.scroll.current;
+    }
+  );
+      
+  return(
+    <group ref={groupRef}>
+      {/* <OrbitControls makeDefault />  */}
+      <ControlesRotacion>
+        <primitive
+          object={ pearl.scene }
+          ref={pearlRef}
+          scale={ 3 }
+          position={ [ 0, 0, 0 ] }
+          // rotation-y={ 5 }
+        />
+      </ControlesRotacion>
+      <Text className="font-['made-tommy-regular']" position={[-3,-3,0]}> Grupo Perla Software </Text>
+    </group>
+  );
+}
 
 
 function ControlesRotacion({ children }){
