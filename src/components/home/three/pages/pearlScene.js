@@ -5,7 +5,7 @@ import { useDrag } from '@use-gesture/react';
 import { animated, useSpring } from '@react-spring/three';
 import * as THREE from 'three';
 
-function PearlHero(){
+function PearlScene(){
   const scroll = useScroll();
   const pearl = useGLTF('/pearl/source/pearl3.gltf');
   const pearlRef = useRef();
@@ -14,8 +14,7 @@ function PearlHero(){
 
   useFrame(
     (state, delta) => {
-      groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, -scroll.scroll.current * 15, 2, delta);
-      // groupRef.current.position.y = Math.sin(scroll.scroll.current) * 0.5;
+      groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, -scroll.scroll.current * 40, 2, delta);
       const scrollDelta = scroll.scroll.current - prevScroll;
       if(scrollDelta > 0 ) {
         const rotationY = pearlRef.current.rotation.y;
@@ -24,7 +23,7 @@ function PearlHero(){
       prevScroll = scroll.scroll.current;
     }
   );
-      
+  
   return(
     <group ref={groupRef}>
       {/* <OrbitControls makeDefault />  */}
@@ -65,5 +64,6 @@ function ControlesRotacion({ children }){
   );
 }
 
+
   
-export default PearlHero;
+export default PearlScene;
