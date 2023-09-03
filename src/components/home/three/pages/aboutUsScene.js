@@ -22,7 +22,7 @@ function AboutUsScene(){
         meshRef.current.visible = false;
         // groupRef.current.position.set([-7,0,0])
       }
-      groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, -15 + (scroll.scroll.current - 0.4) * 15, 2, delta)
+      groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, -20 + (scroll.scroll.current - 0.4) * 15, 2, delta)
     }
   );
 
@@ -34,6 +34,7 @@ function AboutUsScene(){
             material={new THREE.MeshNormalMaterial({ flatShading: true })}
             position={[0, 4, 0]}
             visible={false}
+            wireframe
             >
         <icosahedronGeometry args={[4, 1]}  />
       </mesh>
