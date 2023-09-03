@@ -11,9 +11,10 @@ import AboutUsScene from './pages/aboutUsScene';
 function Scene(){
   return(
     <>
+      <color attach="background" args={['linear-gradient(to bottom, #f00 0%,#e0e 51%,#f4f 100%)']} />
       <Lights />
       <ScrollControls pages={5} distance={0.5}>      
-        <SectionWrapper yOffset={-3.5}>
+        <SectionWrapper yOffset={-3.5} >          
           <PearlScene />
         </SectionWrapper>
         <SectionWrapper yOffset={-3.5}>
@@ -22,7 +23,10 @@ function Scene(){
         <Scroll html style={{ width: '100%' }}>
           <h3 style={{ position: 'absolute', top: `60vh`, right: '20vw', fontSize: '8em', color: 'black', transform: `translate3d(0,-100%,0)` }}>Grupo Perla</h3>
           <p style={{ position: 'absolute', top: `70vh`, right: '20vw', fontSize: '4em', color: 'black', transform: `translate3d(0,-120%,0)` }}>surfeando la vida =P</p>
+          <h3 style={{ position: 'absolute', top: `430vh`, right: '10vw', fontSize: '6em', color: 'black', transform: `translate3d(0,-100%,0)` }}>Tremendos capos estos pibess</h3>
+          <p style={{ position: 'absolute', top: `440vh`, right: '10vw', fontSize: '4em', color: 'black', transform: `translate3d(0,-120%,0)` }}>contratanos gringo culeau</p>
         </Scroll>
+
         
       </ScrollControls>
     </>
