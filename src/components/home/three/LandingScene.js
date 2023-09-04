@@ -1,18 +1,19 @@
 'use client';
-import React from 'react';
 import { ScrollControls, Scroll } from '@react-three/drei';
-import PearlScene from './pages/pearlScene';
 import SectionWrapper from './pages/sectionWrapper';
 import AboutUsScene from './pages/aboutUsScene';
+import PearlScene from './pages/pearlScene';
+import Background from './pages/background';
 
 /**
- * Escena del Hero con perla animada 
+ * Escena con hero scrolleable
  */
 function Scene(){
   return(
     <>
       <color attach="background" args={['linear-gradient(to bottom, #f00 0%,#e0e 51%,#f4f 100%)']} />
       <Lights />
+      <Background />
       <ScrollControls pages={5} distance={0.5}>      
         <SectionWrapper yOffset={-3.5} >          
           <PearlScene />
@@ -26,8 +27,6 @@ function Scene(){
           <h3 style={{ position: 'absolute', top: `430vh`, right: '10vw', fontSize: '6em', color: 'black', transform: `translate3d(0,-100%,0)` }}>Tremendos capos estos pibess</h3>
           <p style={{ position: 'absolute', top: `440vh`, right: '10vw', fontSize: '4em', color: 'black', transform: `translate3d(0,-120%,0)` }}>contratanos gringo culeau</p>
         </Scroll>
-
-        
       </ScrollControls>
     </>
   );
