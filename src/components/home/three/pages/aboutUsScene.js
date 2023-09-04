@@ -26,8 +26,6 @@ function AboutUsScene(){
     }
   );
 
-  
-
   return(
     <group ref={groupRef} position={[-15,0,0]}>
       <mesh ref={meshRef}

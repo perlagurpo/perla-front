@@ -3,12 +3,13 @@ import { useState } from 'react';
 import Link from "next/link";
 
 export default function Navbar() {
-
+  const initialColor = "#000"
   const [menuOpened, setMenuOpened] = useState(false);
+  const [navColor, setNavColor] = useState();
 
   return(
-    <nav className="flex flex-col bg-perla-fullBlack dark:perla-fullBlack font-['made-tommy-regular'] items-center">
-      <div className="min-w-full flex flex-wrap items-center justify-between py-4 md:px-[5em] lg:px-[12em]  ">
+    <nav className="sticky flex flex-col bg-sky-500/[.08] font-['made-tommy-regular'] items-center z-10">
+      <div className="min-w-full flex flex-wrap items-center justify-between py-2 md:px-[5em] lg:px-[12em]  ">
         <Link href="/" className="flex items-center">
           <img src="/img/perla.png" className="h-10 px-6" alt="Perla Labs" />
         </Link>
@@ -20,17 +21,17 @@ export default function Navbar() {
         <div className="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="flex flex-col p-4 mt-4 md:p-0 md:flex-row md:gap-x-[6em] md:mt-0 md:border-0 font-semibold">
             <li>
-              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-orange-700 md:p-0  md:dark:hover:text-fomo-pri-one dark:hover:text-fomo-pri-one">
+              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
                 ¿Quiénes somos?
               </Link>
             </li>
             <li>
-              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-orange-700 md:p-0  md:dark:hover:text-fomo-pri-one dark:hover:text-fomo-pri-one">
+              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
                 Proyectos
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-orange-700 md:p-0  md:dark:hover:text-fomo-pri-one dark:hover:text-fomo-pri-one">
+              <Link href="/contact" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
                 Contacto
               </Link>
             </li>
@@ -38,20 +39,20 @@ export default function Navbar() {
         </div>
 
         <div className={`${ menuOpened ? "block" : "hidden"} w-full md:hidden`} onClick={() => setMenuOpened(false)}>
-          <ul className="flex flex-col text-center p-4 text-lg font-medium text-fomo-pri-one dark:bg-fomo-sec-white dark:text-fomo-pri-two">
+          <ul className="flex flex-col text-center p-4 text-lg font-medium">
             <li>
-              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-orange-700 md:p-0  md:dark:hover:text-fomo-pri-one dark:hover:text-fomo-pri-one">
+              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0">
                 Eventos
               </Link>
             </li>
             
             <li>
-              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-orange-700 md:p-0  md:dark:hover:text-fomo-pri-one dark:hover:text-fomo-pri-one">
+              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0">
                 Nosotros
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-orange-700 md:p-0  md:dark:hover:text-fomo-pri-one dark:hover:text-fomo-pri-one">
+              <Link href="/contact" className="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0">
                 Contacto
               </Link>
             </li>

@@ -38,6 +38,10 @@
     font-family: 'made-tommy-black';
     src: url('/fonts/made_tommy_soft/mt_Soft_Black_PERSONAL_USE.otf');
   }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 :root {
