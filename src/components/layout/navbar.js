@@ -1,14 +1,32 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from "next/link";
 
 export default function Navbar() {
-  const initialColor = "#000"
   const [menuOpened, setMenuOpened] = useState(false);
-  const [navColor, setNavColor] = useState();
+  const [opacityLevel, setOpacityLevel] = useState(1);
+  var scrolledAmount = 0;
+
+
+  const handleWheel = (e) => {
+    const newValue = scrolledAmount + e.deltaY;
+    if (newValue >= 0) {
+      scrolledAmount = newValue;
+    }
+    if (newValue < 300) {
+      setOpacityLevel(1);
+    } else {
+      setOpacityLevel(0);
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("wheel", (e) => handleWheel(e));
+  }, []);
+
 
   return(
-    <nav className="sticky flex flex-col bg-sky-500/[.08] font-['made-tommy-regular'] items-center z-10">
+    <nav className={`sticky flex flex-col bg-black font-['made-tommy-regular'] items-center z-10 transition duration-500`} style={{ 'backgroundColor' : `rgba(0, 0, 0, ${opacityLevel}`, transition: 'all 1s ease' }}>
       <div className="min-w-full flex flex-wrap items-center justify-between py-2 md:px-[5em] lg:px-[12em]  ">
         <Link href="/" className="flex items-center">
           <img src="/img/perla.png" className="h-10 px-6" alt="Perla Labs" />
@@ -63,3 +81,30 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
+
+
+// const handleWheel = (e) => {
+//   var deltaY = - e.deltaY / 3000;
+//   const newOpacity = opacity + deltaY;
+//   if(newOpacity > 0 && newOpacity < 1) {
+//     opacity += deltaY;
+//     setOpacityLevel(opacity);
+//   }
+// }
+
+
+
+// const { scrollYProgress } = useScroll({
+//   container: containerRef,
+//   onChange: ({ value: { scrollYProgress } }) => {
+//     if (scrollYProgress > 0.7) {
+//       console.log("hola");
+//     }
+//     console.log(scrollYProgress);
+//   },
+//   default: {
+//     immediate: true,
+//   },
+// })
