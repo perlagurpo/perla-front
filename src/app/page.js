@@ -1,7 +1,7 @@
 'use client';
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import LandingScene from '@/components/home/three/LandingScene';
+import LandingScene from '@/components/home/three/landingScene/LandingScene';
 
 export default function Home() {
   return (

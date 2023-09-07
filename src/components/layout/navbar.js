@@ -1,35 +1,18 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Link from "next/link";
 
 export default function Navbar() {
   const [menuOpened, setMenuOpened] = useState(false);
-  const [opacityLevel, setOpacityLevel] = useState(1);
-  var scrolledAmount = 0;
-
-
-  const handleWheel = (e) => {
-    const newValue = scrolledAmount + e.deltaY;
-    if (newValue >= 0) {
-      scrolledAmount = newValue;
-    }
-    if (newValue < 300) {
-      setOpacityLevel(1);
-    } else {
-      setOpacityLevel(0);
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("wheel", (e) => handleWheel(e));
-  }, []);
-
+  const scroll = useSelector((state) => state.scroll.value);
 
   return(
-    <nav className={`sticky flex flex-col bg-black font-['made-tommy-regular'] items-center z-10 transition duration-500`} style={{ 'backgroundColor' : `rgba(0, 0, 0, ${opacityLevel}`, transition: 'all 1s ease' }}>
+    <nav className={`sticky flex flex-col bg-black font-['made-tommy-regular'] items-center z-10 transition duration-500`} style={{ 'backgroundColor' : `rgba(0, 0, 0, ${ scroll > 0.02 ? '0' : '1' }`, transition: 'all 1s ease' }}>
       <div className="min-w-full flex flex-wrap items-center justify-between py-2 md:px-[5em] lg:px-[12em]  ">
         <Link href="/" className="flex items-center">
           <img src="/img/perla.png" className="h-10 px-6" alt="Perla Labs" />
+          <h1 className='text-lg text-perla-primary'>{ scroll }</h1>
         </Link>
         <button onClick={() => setMenuOpened(!menuOpened)}
                 type="button" 
@@ -54,6 +37,7 @@ export default function Navbar() {
               </Link>
             </li>
           </ul>
+          
         </div>
 
         <div className={`${ menuOpened ? "block" : "hidden"} w-full md:hidden`} onClick={() => setMenuOpened(false)}>
@@ -82,29 +66,26 @@ export default function Navbar() {
   );
 }
 
+// Función vieja para setear la opacidad calculando el scroll manualmente
+  // /**
+  //  * Función para manejar la opacidad del navbar según se haya scrolleado o no 
+  //  * @param {*} e 
+  //  */
 
+  // var scrolledAmount = 0;
 
+  // const handleWheel = (e) => {
+  //   const newValue = scrolledAmount + e.deltaY;
+  //   if (newValue >= 0) {
+  //     scrolledAmount = newValue;
+  //   }
+  //   if (newValue < 300) {
+  //     setOpacityLevel(1);
+  //   } else {
+  //     setOpacityLevel(0);
+  //   }
+  // }
 
-// const handleWheel = (e) => {
-//   var deltaY = - e.deltaY / 3000;
-//   const newOpacity = opacity + deltaY;
-//   if(newOpacity > 0 && newOpacity < 1) {
-//     opacity += deltaY;
-//     setOpacityLevel(opacity);
-//   }
-// }
-
-
-
-// const { scrollYProgress } = useScroll({
-//   container: containerRef,
-//   onChange: ({ value: { scrollYProgress } }) => {
-//     if (scrollYProgress > 0.7) {
-//       console.log("hola");
-//     }
-//     console.log(scrollYProgress);
-//   },
-//   default: {
-//     immediate: true,
-//   },
-// })
+  // useEffect(() => {
+  //   window.addEventListener("wheel", (e) => handleWheel(e));
+  // }, []);

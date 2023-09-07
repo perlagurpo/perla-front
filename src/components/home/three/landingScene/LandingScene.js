@@ -4,6 +4,7 @@ import SectionWrapper from './pages/sectionWrapper';
 import AboutUsScene from './pages/aboutUsScene';
 import PearlScene from './pages/pearlScene';
 import Background from './pages/background';
+import ScrollHandler from '../../../utils/three/scrollHandler';
 
 /**
  * Escena con hero scrolleable
@@ -14,7 +15,8 @@ function Scene(){
       <color attach="background" args={['linear-gradient(to bottom, #f00 0%,#e0e 51%,#f4f 100%)']} />
       <Lights />
       <Background />
-      <ScrollControls pages={5} distance={0.5}>      
+      <ScrollControls pages={5} distance={0.5}>
+        <ScrollHandler />
         <SectionWrapper yOffset={-3.5} >          
           <PearlScene />
         </SectionWrapper>
