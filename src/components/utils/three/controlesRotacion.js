@@ -1,5 +1,5 @@
-import { useMemo } from "react";
-import { useThree } from "@react-three/fiber";
+import { useMemo } from 'react';
+import { useThree } from '@react-three/fiber';
 import { animated, useSpring } from '@react-spring/three';
 import { useDrag } from '@use-gesture/react';
 import * as THREE from 'three';
@@ -18,8 +18,8 @@ export default function ControlesRotacion({ children }){
   })
 
   return(
-      <animated.group {...bind()} {...spring}>
+    <animated.group {...bind()} {...spring}>
       { children }
-      </animated.group>
+    </animated.group>
   );
 }

@@ -20,7 +20,6 @@ function AboutUsScene(){
         
       } else {
         meshRef.current.visible = false;
-        // groupRef.current.position.set([-7,0,0])
       }
       groupRef.current.position.x = THREE.MathUtils.damp(groupRef.current.position.x, -20 + (scroll.scroll.current - 0.4) * 15, 2, delta)
     }
@@ -39,8 +38,5 @@ function AboutUsScene(){
     </group>
   );
 }
-
-
-
 
 export default AboutUsScene;
