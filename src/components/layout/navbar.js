@@ -1,11 +1,17 @@
 'use client';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLang } from '@/app/store/features/langSlice';
 import Link from "next/link";
 
 export default function Navbar() {
   const [menuOpened, setMenuOpened] = useState(false);
+  const [langMenuOpened, setLangMenuOpened] = useState(false);
   const scroll = useSelector((state) => state.scroll.value);
+  const lang = useSelector((state) => state.lang.value);
+  const availableLangs = useSelector((state) => state.lang.availableValues);
+  const content = useSelector((state) => state.lang.content);
+  const dispatch = useDispatch();
 
   return(
     <nav className={`sticky flex flex-col bg-black font-['made-tommy-regular'] items-center z-10 transition duration-500`} style={{ 'backgroundColor' : `rgba(0, 0, 0, ${ scroll > 0.02 ? '0' : '1' }`, transition: 'all 1s ease' }}>
@@ -19,22 +25,42 @@ export default function Navbar() {
                 className="inline-flex items-center bg-transparent p-2 ml-3 rounded-lg md:hidden" aria-controls="navbar-default" aria-expanded="false">
           <svg className="w-6 h-6 fill-perla-primary" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
         </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+        <div className="flex flex-row hidden w-full md:block md:w-auto" id="navbar-default">
           <ul className="flex flex-col p-4 mt-4 md:p-0 md:flex-row md:gap-x-[6em] md:mt-0 md:border-0 font-semibold">
             <li>
               <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
-                ¿Quiénes somos?
+                { content["navbar"].about }
               </Link>
             </li>
             <li>
               <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
-                Proyectos
+                { content["navbar"].projects }
               </Link>
             </li>
             <li>
               <Link href="/contact" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
-                Contacto
+                { content["navbar"].contact }
               </Link>
+            </li>
+            <li className='relative'>
+              <button onClick={ () => {setLangMenuOpened(!langMenuOpened)} }>
+                <h2 className='font-[made-tommy-thin]'>
+                  { lang }
+                </h2>
+              </button>
+              <div  className={`flex flex-row absolute top-0.5 left-10 gap-2 z-20 bg-perla-black px-3 py-2 rounded-lg  ${ langMenuOpened ? 'block' : 'hidden'} transition duration-1000`}
+                    onClick={() => setLangMenuOpened(false)}
+                    >
+                      { 
+                        availableLangs && 
+                          availableLangs.map( (data, i) => {
+                            return  <h2 className='font-[made-tommy-thin] text-sm cursor-pointer hover:text-perla-primary transition duration-100'
+                                        onClick={() => {dispatch(setLang(data))}}>
+                                      { data }
+                                    </h2>
+                          })
+                      }
+              </div>
             </li>
           </ul>
           

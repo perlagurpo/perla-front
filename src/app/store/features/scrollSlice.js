@@ -13,6 +13,6 @@ export const scrollSlice = createSlice({
 });
 
 /* Acciones generadas por createSlice en base a los reducers que les pasamos */
-export const { setCurrent, toogleScroll } = scrollSlice.actions;
+export const { setCurrent } = scrollSlice.actions;
 
 export default scrollSlice.reducer;
