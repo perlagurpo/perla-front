@@ -1,15 +1,21 @@
 {
-
     "ES": {
         "navbar": {
             "about": "¿Quiénes somos?",
             "projects": "Proyectos",
             "contact": "Contacto"
         },
-        "hero": {
-            "title": "Perla LAbs",
-            "subtitle": "surfeando la vida :P"
+        "canvas": {
+            "hero": {
+                "title": "Perla Labs",
+                "subtitle": "surfeando la vida"
+            },
+            "aboutUs": {
+                "title": "Acerca de",
+                "subtitle": "asdw"
+            }
         }
+        
     },
 
     "EN": {
@@ -18,10 +24,15 @@
             "projects": "Projects",
             "contact": "Contact"
         },
-        "hero": {
-            "title": "Perla LAbs",
-            "subtitle": "surfing life :P"
+        "canvas": {
+            "hero": {
+                "title": "Perla Labs",
+                "subtitle": "surfin la vida :P"
+            },
+            "aboutUs": {
+                "title": "About",
+                "subtitle": "about"
+            }
         }
     }
-
 }
