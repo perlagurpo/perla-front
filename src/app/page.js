@@ -1,9 +1,12 @@
 'use client';
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
+import { useSelector } from 'react-redux';
 import LandingScene from '@/components/home/three/landingScene/LandingScene';
 
 export default function Home() {
+  const canvasTextContent = useSelector((state) => state.lang.content.canvas);
+
   return (
     <main className='max-h-screen min-w-screen bg-white font-[made-tommy-regular]'>
       {/*
@@ -17,7 +20,7 @@ export default function Home() {
          */}
         <Suspense fallback={<h2>Cargando</h2>}>
           <Canvas orthographic={true} camera={{ zoom: 90 }}>
-            <LandingScene />
+            <LandingScene textContent={canvasTextContent} />
             <axesHelper />
           </Canvas>
         </Suspense>

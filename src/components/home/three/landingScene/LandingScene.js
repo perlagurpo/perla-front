@@ -6,11 +6,13 @@ import PearlScene from './pages/pearlScene';
 import Background from './pages/background';
 import ScrollHandler from '../../../utils/three/scrollHandler';
 import TextLayer from './pages/textLayer';
+import ContactScene from './pages/contactScene';
 
 /**
  * Escena con hero scrolleable
  */
-function Scene(){
+function Scene({ textContent={} }){
+
   return(
     <>
       <color attach="background" args={['linear-gradient(to bottom, #f00 0%,#e0e 51%,#f4f 100%)']} />
@@ -18,15 +20,14 @@ function Scene(){
       <Background />
       <ScrollControls pages={5} distance={0.5}>
         <ScrollHandler />
-        <SectionWrapper yOffset={-3.5} >          
-          <PearlScene />
-        </SectionWrapper>
-        <SectionWrapper yOffset={-3.5}>
-          <AboutUsScene />
+        <SectionWrapper yOffset={-4} >          
+          <PearlScene text={textContent.hero} />
+          <AboutUsScene text={textContent.aboutUs} />
         </SectionWrapper>
         <Scroll html style={{ width: '100%' }}>
-          <TextLayer />
+          {/*<TextLayer textContent={textContent} />*/}
         </Scroll>
+        
       </ScrollControls>
     </>
   );
