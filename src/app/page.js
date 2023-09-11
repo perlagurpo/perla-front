@@ -19,7 +19,7 @@ export default function Home() {
          * se puede usar una página de loading de Next.
          */}
         <Suspense fallback={<h2>Cargando</h2>}>
-          <Canvas orthographic={true} camera={{ zoom: 90 }}>
+          <Canvas orthographic={true} camera={{ zoom: 90, position: [0,2,10], rotation: [-0.3,0,0] }}>
             <LandingScene textContent={canvasTextContent} />
             <axesHelper />
           </Canvas>

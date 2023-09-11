@@ -1,5 +1,5 @@
 'use client';
-import { ScrollControls, Scroll } from '@react-three/drei';
+import { ScrollControls, Scroll, ContactShadows } from '@react-three/drei';
 import SectionWrapper from './pages/sectionWrapper';
 import AboutUsScene from './pages/aboutUsScene';
 import PearlScene from './pages/pearlScene';
@@ -22,6 +22,7 @@ function Scene({ textContent={} }){
         <ScrollHandler />
         <SectionWrapper yOffset={-4} >          
           <PearlScene text={textContent.hero} />
+          <ContactShadows opacity={0.4} scale={15} blur={10} far={20} resolution={512} color="#000000" />
           <AboutUsScene text={textContent.aboutUs} />
         </SectionWrapper>
         <Scroll html style={{ width: '100%' }}>

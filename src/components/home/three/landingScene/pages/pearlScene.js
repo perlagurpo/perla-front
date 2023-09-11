@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Text, useGLTF, useScroll } from '@react-three/drei';
+import { ContactShadows, Float, OrbitControls, PresentationControls, Text, useGLTF, useScroll } from '@react-three/drei';
 import { MathUtils } from 'three';
 import ControlesRotacion from '@/components/utils/three/controlesRotacion';
 
@@ -35,17 +35,23 @@ function PearlScene({ text }) {
 
   return(
     <group>
+      {/* <OrbitControls /> */}
       <group ref={groupRef}>
         <directionalLight color="blue" position={[0, 10, 0]} intensity={0.31}/>
-          <ControlesRotacion>
-            <primitive
-              object={ pearl.scene }
-              ref={pearlRef}
-              scale={ 3 }
-              position={ [ 0, 0, 0 ] }
-            />
-          </ControlesRotacion>
+        <PresentationControls polar={[0, 0]} speed={10} config={{ mass: 0.1, tension: 170, friction: 26 }} >
+          <Float rotationIntensity={0} floatIntensity={2} floatingRange={[0, 1]}>
+          <primitive
+            object={ pearl.scene }
+            ref={pearlRef}
+            scale={ 2 }
+            position={ [ 0, 0, 0 ] }
+          />
+          </Float>
+        </PresentationControls>
       </group>
+          {/* <mesh position={[1,1,0]} scale={4} rotation={[-Math.PI/2, 0 , 0 ]} >
+            <planeGeometry />
+          </mesh> */}
 
       <Text position={[3,2,4]} scale={1.5} color="black" ref={titleRef}>
         {text.title}

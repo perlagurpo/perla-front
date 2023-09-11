@@ -6,7 +6,7 @@ export default function Background() {
 
   return(
     <group>
-      <mesh ref={sphereRef}>
+      <mesh ref={sphereRef} position-z={-7}>
         <planeGeometry args={[100, 100]} attach="geometry" />
         <meshBasicMaterial>
             <GradientTexture
