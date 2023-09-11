@@ -11,8 +11,9 @@
                 "subtitle": "surfeando la vida"
             },
             "aboutUs": {
-                "title": "Acerca de",
-                "subtitle": "asdw"
+                "title": "Horizontes digitales",
+                "desc1": "Grupo Perla software desarrolla proyectos a aplicaciones web y soluciones en sistemas para organizaciones y todo tipo de proyectos de gestion integral.",
+                "desc2": "Buscamos flexibilidad y automatización a la hora de trabajar y generar nuestros proyectos. Consideramos que la prolijidad, la sencillez y la escalabilidad son pilares fundamentales de cualquiera de nuestros sistemas."
             }
         }
         
@@ -27,11 +28,12 @@
         "canvas": {
             "hero": {
                 "title": "Perla Labs",
-                "subtitle": "surfin la vida :P"
+                "subtitle": ""
             },
             "aboutUs": {
-                "title": "About",
-                "subtitle": "about"
+                "title": "Digital horizons",
+                "desc1": "Grupo Perla software desarrolla proyectos a aplicaciones web y soluciones en sistemas para organizaciones y todo tipo de proyectos de gestion integral.",
+                "desc2": "Buscamos flexibilidad y automatización a la hora de trabajar y generar nuestros proyectos. Consideramos que la prolijidad, la sencillez y la escalabilidad son pilares fundamentales de cualquiera de nuestros sistemas."
             }
         }
     }
