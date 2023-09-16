@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useSelector } from 'react-redux';
 import LandingScene from '@/components/home/three/landingScene/LandingScene';
+import ContactSection from '@/components/home/htmlLayout/contactSection';
 
 export default function Home() {
   const canvasTextContent = useSelector((state) => state.lang.content.canvas);
@@ -23,6 +24,7 @@ export default function Home() {
             <LandingScene textContent={canvasTextContent} />
             <axesHelper />
           </Canvas>
+          <ContactSection />
         </Suspense>
       </div>
     </main>

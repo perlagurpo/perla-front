@@ -40,46 +40,59 @@ export default function ContactForm() {
     response.ok ? alert("Mensaje enviado exitosamente") : alert("Intento fallido");
   }
 
+  const [nameActive, setNameActive] = useState(false);
+  const [emailActive, setEmailActive] = useState(false);
+
+
   return(
-    <div>
+    <div className="flex flex-col items-center text-perla-white">
+      <h1 className="text-7xl font-[made-tommy-black] py-2">CONTACT</h1>
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-4 items-end text-orange-200">
+        <div className="flex flex-col gap-4 items-center text-perla-white">
           <div className="flex flex-row gap-4">
-            <label htmlFor="name">Name</label>
-            <input 
-                type="text"
-                autoComplete="off"
-                id="name" 
-                required
-                minLength={2}
-                maxLength={50}
-                value={values.name}
-                onChange={handleChange}
-                className="text-black"
-                />
+            <div className="flex flex-col relative">
+            <label for="email" className={`${nameActive ? "opacity-100" : "opacity-0"} transition duration-500`}>Name</label>
+              <input 
+                  type="text"
+                  autoComplete="off"
+                  id="name" 
+                  required
+                  minLength={2}
+                  maxLength={50}
+                  value={values.name}
+                  onChange={handleChange}
+                  className="text-xl text-perla-white bg-transparent border-b-2 border-perla-white focus:outline-none"
+                  placeholder={`${nameActive ? "" : "Name"}`}
+                  onFocus={() => setNameActive(true)}
+                  onBlur={() => setNameActive(false)}
+                  />
+            </div>
+            <div className="flex flex-col relative">
+              <label for="email" className={`${emailActive ? "opacity-100" : "opacity-0"} transition duration-500`}>Email</label>
+              <input 
+                  type="email"
+                  autoComplete="off"
+                  id="email"
+                  required
+                  maxLength={50}
+                  minLength={4}
+                  value={values.email}
+                  onChange={handleChange}
+                  className="text-xl text-perla-white bg-transparent border-b-2 border-perla-white focus:outline-none"
+                  placeholder={`${emailActive ? "" : "Email"}`}
+                  onFocus={() => setEmailActive(true)}
+                  onBlur={() => setEmailActive(false)}
+                  />
+            </div>
           </div>
-          <div className="flex flex-row gap-4">
-            <label htmlFor="email">Email</label>
-            <input 
-                type="email"
-                autoComplete="off"
-                id="email"
-                required
-                maxLength={50}
-                minLength={4}
-                value={values.email}
-                onChange={handleChange}
-                className="text-black"
-                />
-          </div>
-          <div className="flex flex-row gap-4 w-full text-black">
+          <div className="flex flex-col gap-4 w-full">
+            <p className="text-xl text-perla-white">Message</p>
             <textarea 
                 name="message"
                 id="message"
                 rows={6}
                 minLength={5}
                 maxLength={400}
-                placeholder="Write your message here"
                 value={values.message}
                 onChange={handleChange}
                 className="w-full p-2"
