@@ -28,7 +28,7 @@ function Scene({ textContent={} }){
           <PearlScene text={textContent.hero} />
           <AboutUsScene text={textContent.aboutUs} />
           <ContactScene />
-          <ContactShadows opacity={0.4} scale={20} blur={10} far={20} resolution={512} color="#000000" />
+          <ContactShadows opacity={0.4} scale={25}  blur={10} far={20} resolution={512} color="#000000" />
           {/* <ContactScene /> */}
         </SectionWrapper>
         <Scroll html style={{ width: '100%' }}>

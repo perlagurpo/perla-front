@@ -45,10 +45,10 @@ export default function ContactForm() {
 
 
   return(
-    <div className="flex flex-col items-center text-perla-white">
+    <div className="flex flex-col items-center text-perla-white gap-4">
       <h1 className="text-7xl font-[made-tommy-black] py-2">CONTACT</h1>
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-4 items-center text-perla-white">
+        <div className="flex flex-col gap-8 items-center text-perla-white font-[made-tommy-thin]">
           <div className="flex flex-row gap-4">
             <div className="flex flex-col relative">
             <label for="email" className={`${nameActive ? "opacity-100" : "opacity-0"} transition duration-500`}>Name</label>
@@ -85,20 +85,20 @@ export default function ContactForm() {
                   />
             </div>
           </div>
-          <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col w-full gap-2">
             <p className="text-xl text-perla-white">Message</p>
             <textarea 
                 name="message"
                 id="message"
-                rows={6}
+                rows={4}
                 minLength={5}
                 maxLength={400}
                 value={values.message}
                 onChange={handleChange}
-                className="w-full p-2"
+                className="w-full py-2 px-4 bg-transparent border-2 border-perla-white rounded-lg focus:outline-none"
                 />
           </div>
-          <button type="submit" className="bg-perla-primary text-white px-4 py-2">send</button>
+          <button type="submit" className="bg-perla-primary text-white px-4 py-2 rounded-lg opacity-80 hover:opacity-100">send</button>
         </div>
       </form>
     </div>

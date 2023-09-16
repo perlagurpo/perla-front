@@ -24,9 +24,11 @@ export default function ContactScene() {
   );
 
   return(
-    <Plane ref={planeRef} args={[30,30,30]} position={[0,0,0]} material-color="black">
-      
-    </Plane>
+    <animated.group opacity={planeSpring.opacity}>
+      <Plane ref={planeRef} args={[30,30,30]} position={[0,0,0]} material-color="black">
+        
+      </Plane>
+    </animated.group>
   );
 }
 
