@@ -5,7 +5,6 @@ import AboutUsScene from './pages/aboutUsScene';
 import PearlScene from './pages/pearlScene';
 import Background from './pages/background';
 import ScrollHandler from '../../../utils/three/scrollHandler';
-import TextLayer from './pages/textLayer';
 import ContactScene from './pages/contactScene';
 
 /**

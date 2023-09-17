@@ -2,6 +2,10 @@ import ContactForm from '@/components/contact/contactForm';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
+/*
+  Componente HTML que se activa con scroll por fuera del Canvas
+  Actualmente es conflictiva la convivencia entre HTML posicionado absolutamente y ScrollControlls
+*/
 export default function ContactSection(){
 
   const scroll = useSelector((state) => state.scroll.value);
