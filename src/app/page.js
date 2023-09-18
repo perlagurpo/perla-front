@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { useSelector } from 'react-redux';
 import LandingScene from '@/components/home/three/landingScene/LandingScene';
+import ContactSection from '@/components/home/htmlLayout/contactSection';
 
 export default function Home() {
   const canvasTextContent = useSelector((state) => state.lang.content.canvas);
@@ -18,13 +19,15 @@ export default function Home() {
          * Dejo un Suspense de React para mostrar un mensaje mientras se carga el Canvas. Creo que también
          * se puede usar una página de loading de Next.
          */}
-        <Suspense fallback={<h2>Cargando</h2>}>
+        <Suspense fallback={<h2>Cargando</h2>} className="z-4">
           <Canvas orthographic={true} camera={{ zoom: 90, position: [0,2,10], rotation: [-0.3,0,0] }}>
             <LandingScene textContent={canvasTextContent} />
-            <axesHelper />
+            {/* <axesHelper /> */}
+            
           </Canvas>
         </Suspense>
       </div>
+      <ContactSection />
     </main>
   )
 }

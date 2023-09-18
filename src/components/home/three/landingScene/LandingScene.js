@@ -1,11 +1,10 @@
 'use client';
-import { ScrollControls, Scroll, ContactShadows } from '@react-three/drei';
+import { ScrollControls, Scroll, ContactShadows, OrbitControls } from '@react-three/drei';
 import SectionWrapper from './pages/sectionWrapper';
 import AboutUsScene from './pages/aboutUsScene';
 import PearlScene from './pages/pearlScene';
 import Background from './pages/background';
 import ScrollHandler from '../../../utils/three/scrollHandler';
-import TextLayer from './pages/textLayer';
 import ContactScene from './pages/contactScene';
 
 /**
@@ -18,12 +17,18 @@ function Scene({ textContent={} }){
       <color attach="background" args={['linear-gradient(to bottom, #f00 0%,#e0e 51%,#f4f 100%)']} />
       <Lights />
       <Background />
-      <ScrollControls pages={5} distance={0.5}>
+      
+
+      {/* <OrbitControls /> */}
+      <ScrollControls pages={8} distance={0.5} enabled={true} >
         <ScrollHandler />
+        
         <SectionWrapper yOffset={-4} >          
           <PearlScene text={textContent.hero} />
           <AboutUsScene text={textContent.aboutUs} />
-          <ContactShadows opacity={0.4} scale={20} blur={10} far={20} resolution={512} color="#000000" />
+          <ContactScene />
+          <ContactShadows opacity={0.4} scale={25}  blur={10} far={20} resolution={512} color="#000000" />
+          {/* <ContactScene /> */}
         </SectionWrapper>
         <Scroll html style={{ width: '100%' }}>
           {/*<TextLayer textContent={textContent} />*/}

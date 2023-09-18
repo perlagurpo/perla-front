@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useScroll, Text, Float, MeshNormalMaterial } from "@react-three/drei";
+import { useScroll, Text, Float } from "@react-three/drei";
 import { animated, useSpring } from "@react-spring/three";
-import { clamp, mapLinear } from "three/src/math/MathUtils";
 import * as THREE from 'three';
 
 function AboutUsScene({ text }){
@@ -35,11 +34,11 @@ function AboutUsScene({ text }){
   useFrame(
     (state, delta) => {
       // Hacer un mapeo del scroll
-      const activeThreshold = 0.4;
+      const activeThreshold = 0.3;
       const currentScroll = scroll.scroll.current;
 
       // activo sección
-      if(currentScroll > activeThreshold){
+      if(currentScroll > activeThreshold && currentScroll < 0.65){
         const localScroll = currentScroll / (1 - activeThreshold);
         setVisible(true);
         meshRef.current.rotation.y += 0.04 * delta;
