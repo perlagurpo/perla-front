@@ -13,9 +13,15 @@ export default function ContactScene() {
   const [visible, setVisible] = useState(0);
   const planeRef = useRef();
   const meshRef = useRef();
+  const luzRef = useRef()
 
   const planeSpring = useSpring({
       opacity: visible ? 1 : 0,
+      position: visible ? [-4, 2, 2] : [-4, -20, 2],
+      config : {
+        friction: 100,
+        mass: 20,
+      }
     }
   );
 
@@ -23,15 +29,21 @@ export default function ContactScene() {
   useFrame(
     () => {
       const currentScroll = scroll.scroll.current;
-      currentScroll > 0.8 ? planeRef.current.visible = true : planeRef.current.visible = false;
+      if(currentScroll > 0.8) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+
     }
   );
 
   return(
-    <animated.group opacity={planeSpring.opacity} ref={planeRef}>
+    <animated.group ref={planeRef} visible={visible}>
       {/* Background */}
       <Plane args={[30,30,30]} position={[0,0,-4]} material-color="black" />
-      <group position={[-4, 2, 2]}>
+      {/* Compo esferas */}
+      <animated.group position={planeSpring.position} opacity={planeSpring.opacity}>
         <PresentationControls polar={[0, 0]} speed={10} config={{ mass: 0.1, tension: 170, friction: 26 }} >
           <Spheres position={[0,1,0]} />
           <mesh ref={meshRef}
@@ -44,7 +56,8 @@ export default function ContactScene() {
                 <boxGeometry args={[4, 0.2 , 4]}  />
           </mesh>
         </PresentationControls>
-      </group>
+      </animated.group>
+      <pointLight ref={luzRef} position={[0,2,4]} intensity={10} color={"#305BF3"} />
     </animated.group>
   );
 }
@@ -76,14 +89,13 @@ function Spheres({ amount = 5, distribution, position }) {
 
 
 function Esfera({ position, size }) {
-  const seed = Math.random();
+  
   const ref = useRef();
-  const baseYPosition = position[1];
   
 
   return(
     <mesh material={ new THREE.MeshLambertMaterial({ color: "grey" })} position={position} ref={ref} >
-      
+      <pointLight intensity={5} />
       <sphereGeometry args={[size]} />
     </mesh>
   );
