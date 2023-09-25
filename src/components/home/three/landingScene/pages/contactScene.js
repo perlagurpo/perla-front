@@ -1,6 +1,6 @@
 import ContactForm from "@/components/contact/contactForm";
 import { useRef, useState } from "react";
-import { OrbitControls, Plane, PresentationControls, useScroll, Float } from "@react-three/drei";
+import { OrbitControls, Plane, PresentationControls, useScroll, Float, Scroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { animated, useSpring } from "@react-spring/three";
 import * as THREE from 'three';
@@ -15,7 +15,7 @@ export default function ContactScene() {
   const meshRef = useRef();
   const luzRef = useRef()
 
-  const planeSpring = useSpring({
+  const sculptureSpring = useSpring({
       opacity: visible ? 1 : 0,
       position: visible ? [-4, 2, 2] : [-4, -20, 2],
       config : {
@@ -25,6 +25,13 @@ export default function ContactScene() {
     }
   );
 
+  const backgroundSpring = useSpring({
+    position: visible ? [0,0,-4] : [0,-20,-4],
+    config : {
+      friction: 100,
+      mass: 20,
+    }
+  });
 
   useFrame(
     () => {
@@ -34,16 +41,18 @@ export default function ContactScene() {
       } else {
         setVisible(false);
       }
-
     }
   );
 
   return(
     <animated.group ref={planeRef} visible={visible}>
       {/* Background */}
-      <Plane args={[30,30,30]} position={[0,0,-4]} material-color="black" />
+      <animated.group position={backgroundSpring.position}>
+        <Plane args={[30,30,30]}  material-color="black" />
+      </animated.group>
+      
       {/* Compo esferas */}
-      <animated.group position={planeSpring.position} opacity={planeSpring.opacity}>
+      <animated.group position={sculptureSpring.position} opacity={sculptureSpring.opacity}>
         <PresentationControls polar={[0, 0]} speed={10} config={{ mass: 0.1, tension: 170, friction: 26 }} >
           <Spheres position={[0,1,0]} />
           <mesh ref={meshRef}
@@ -62,10 +71,7 @@ export default function ContactScene() {
   );
 }
 
-
-
 function Spheres({ amount = 5, distribution, position }) {
-
   const spheres = []
   for (let i = 0; i < amount; i++){
     spheres.push({
@@ -78,28 +84,22 @@ function Spheres({ amount = 5, distribution, position }) {
   return(
     <group position={position} castShadow>
       { spheres.map(
-        (sphere) => <Float speed={Math.random() * 2 + 1}>
+        (sphere, i) => <Float speed={Math.random() * 2 + 1} key={i}>
                       <Esfera position={sphere.position} size={sphere.size} />
                     </Float>
-      ) }
-      
+      ) }   
     </group>
   );
 }
 
-
-function Esfera({ position, size }) {
-  
+function Esfera({ position, size }) { 
   const ref = useRef();
-  
-
   return(
     <mesh material={ new THREE.MeshLambertMaterial({ color: "grey" })} position={position} ref={ref} >
       <pointLight intensity={5} />
       <sphereGeometry args={[size]} />
     </mesh>
   );
-
 
 }
 
