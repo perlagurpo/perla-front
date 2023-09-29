@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { ContactShadows, Float, OrbitControls, PresentationControls, Text, useGLTF, useScroll } from '@react-three/drei';
+import { Float, PresentationControls, Text, useGLTF, useScroll } from '@react-three/drei';
 import { MathUtils } from 'three';
-import ControlesRotacion from '@/components/utils/three/controlesRotacion';
+import { VideoTexto } from '@/components/utils/three/videoText';
+import RippleShader from '@/components/utils/three/shaderComponent';
 
 function PearlScene({ text }) {
   const scroll = useScroll();
@@ -49,16 +50,21 @@ function PearlScene({ text }) {
           </Float>
         </PresentationControls>
       </group>
-          {/* <mesh position={[1,1,0]} scale={4} rotation={[-Math.PI/2, 0 , 0 ]} >
-            <planeGeometry />
-          </mesh> */}
+      {/* <mesh position={[1,1,0]} scale={4} rotation={[-Math.PI/2, 0 , 0 ]} >
+        <planeGeometry />
+      </mesh> */}
 
-      <Text position={[3,2,4]} scale={1.5} color="black" ref={titleRef}>
+      {/* <Text position={[3,2,4]} scale={1.5} color="black" ref={titleRef}>
         {text.title}
-      </Text>
-      <Text position={[3,-2,4]} scale={1} color="black" ref={subtitleRef}>
+      </Text> */}
+      <Text position={[3,-2,5]} scale={1} color="black" ref={subtitleRef}>
         {text.subtitle}
       </Text>
+      
+      <group ref={titleRef} position={[0,0,4]}>
+        <VideoTexto texto={"Perla labs"} videoSource={'/video/naturaleza.mp4'} />
+      </group>
+      <RippleShader />
     </group>
   );
 }
