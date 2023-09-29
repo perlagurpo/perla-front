@@ -6,6 +6,7 @@ import PearlScene from './pages/pearlScene';
 import Background from './pages/background';
 import ScrollHandler from '../../../utils/three/scrollHandler';
 import ContactScene from './pages/contactScene';
+import Services from './pages/services';
 
 /**
  * Escena con hero scrolleable
@@ -27,6 +28,7 @@ function Scene({ textContent={} }){
           <PearlScene text={textContent.hero} />
           <AboutUsScene text={textContent.aboutUs} />
           <ContactScene />
+          <Services />
           <ContactShadows opacity={0.4} scale={25}  blur={10} far={20} resolution={512} color="#000000" />
           {/* <ContactScene /> */}
         </SectionWrapper>
