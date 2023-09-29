@@ -51,7 +51,7 @@ export default function ContactForm() {
         <div className="flex flex-col gap-8 items-center text-perla-white font-[made-tommy-thin]">
           <div className="flex flex-row gap-4">
             <div className="flex flex-col relative">
-            <label for="email" className={`${nameActive ? "opacity-100" : "opacity-0"} transition duration-500`}>Name</label>
+            <label htmlFor="email" className={`${nameActive ? "opacity-100" : "opacity-0"} transition duration-500`}>Name</label>
               <input 
                   type="text"
                   autoComplete="off"
@@ -68,7 +68,7 @@ export default function ContactForm() {
                   />
             </div>
             <div className="flex flex-col relative">
-              <label for="email" className={`${emailActive ? "opacity-100" : "opacity-0"} transition duration-500`}>Email</label>
+              <label htmlFor="email" className={`${emailActive ? "opacity-100" : "opacity-0"} transition duration-500`}>Email</label>
               <input 
                   type="email"
                   autoComplete="off"

@@ -10,16 +10,27 @@ export default function ContactSection(){
 
   const scroll = useSelector((state) => state.scroll.value);
   const [visible, setVisible] = useState(false);
+  const [opacity, setOpacity] = useState(0);
 
   useEffect(
     () => {
-      scroll > 0.8 ? setVisible(true) : setVisible(false);
+      scroll > 0.82 ? setVisible(true) : setVisible(false);
+      scroll > 0.82 ? setOpacity(1) : setOpacity(0);
     }
   ,[scroll]);
 
   return(
-    <div className={`flex flex-col ${visible ? "absolute top-[25%] right-[10vw] " : "hidden"} z-0  ${visible ? "opacity-100" : "opacity-0"} transition duration-1000`}>
-      <ContactForm />
+    <div style={{ 
+            opacity: opacity,
+            transition: "all 1.5s 0.1s",
+            position: "absolute",
+            top: "25%",
+            right: "10%",
+            transform: visible ? "translateX(0)" : "translateX(100vw)"
+            }}>
+      <div >
+        <ContactForm />
+      </div>
     </div>
   );
 }
@@ -30,6 +41,7 @@ export default function ContactSection(){
       </div>
 </div> */}
 
+//{`flex flex-col ${visible ? "absolute top-[25%] right-[10vw] " : "hidden"} z-0`}
 
 {/* <div className={`flex flex-col ${visible ? "absolute" : "hidden"}`}>
       <ContactForm />
