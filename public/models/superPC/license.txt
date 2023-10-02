@@ -1,0 +1,11 @@
+Model Information:
+* title:	Computer Console Station
+* source:	https://sketchfab.com/3d-models/computer-console-station-ba27cbf9b47c41f0b04f02de54d30e97
+* author:	Zeppelin (https://sketchfab.com/zeppelingames)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Computer Console Station" (https://sketchfab.com/3d-models/computer-console-station-ba27cbf9b47c41f0b04f02de54d30e97) by Zeppelin (https://sketchfab.com/zeppelingames) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

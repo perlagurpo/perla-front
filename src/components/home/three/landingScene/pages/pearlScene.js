@@ -19,11 +19,11 @@ function PearlScene({ text }) {
       const currentScroll = scroll.scroll.current;
       const scrollDelta = currentScroll - prevScroll;
 
-      groupRef.current.position.x = MathUtils.damp(groupRef.current.position.x, -currentScroll * 40, 2, delta);
+      groupRef.current.position.x = MathUtils.damp(groupRef.current.position.x, -currentScroll * 60, 2, delta);
 
-      titleRef.current.position.y = MathUtils.damp(titleRef.current.position.y, currentScroll * 20 + 4, 2, delta);
-      subtitleRef.current.position.y = MathUtils.damp(subtitleRef.current.position.y, currentScroll * 20 + 3, 2, delta);
-      subtitleRef.current.position.z = MathUtils.damp(subtitleRef.current.position.z, currentScroll * 1 + 4, 2, delta);
+      titleRef.current.position.y = MathUtils.damp(titleRef.current.position.y, currentScroll * 30 + 4, 2, delta);
+      // subtitleRef.current.position.y = MathUtils.damp(subtitleRef.current.position.y, currentScroll * 20 + 3, 2, delta);
+      // subtitleRef.current.position.z = MathUtils.damp(subtitleRef.current.position.z, currentScroll * 1 + 4, 2, delta);
 
       if(scrollDelta > 0 ) {
         const pearlRotationY = pearlRef.current.rotation.y;
@@ -57,9 +57,9 @@ function PearlScene({ text }) {
       {/* <Text position={[3,2,4]} scale={1.5} color="black" ref={titleRef}>
         {text.title}
       </Text> */}
-      <Text position={[3,-2,5]} scale={1} color="black" ref={subtitleRef}>
+      {/* <Text position={[3,-2,5]} scale={1} color="black" ref={subtitleRef}>
         {text.subtitle}
-      </Text>
+      </Text> */}
       
       <group ref={titleRef} position={[0,0,4]}>
         <VideoTexto texto={"Perla labs"} videoSource={'/video/naturaleza.mp4'} />

@@ -12,8 +12,9 @@
             },
             "aboutUs": {
                 "title": "Horizontes digitales",
-                "desc1": "Grupo Perla software desarrolla proyectos a aplicaciones web y soluciones en sistemas para organizaciones y todo tipo de proyectos de gestion integral.",
-                "desc2": "Buscamos flexibilidad y automatización a la hora de trabajar y generar nuestros proyectos. Consideramos que la prolijidad, la sencillez y la escalabilidad son pilares fundamentales de cualquiera de nuestros sistemas."
+                "subtitle": "En Perla, nos enorgullecemos de ser un equipo altamente innovador y versátil",
+                "desc1": "Gracias a nuestra experiencia en el mundo del desarrollo de software, hemos perfeccionado la capacidad de adaptarnos a cualquier desafío que se nos presente.Sin importar el tipo de proyecto que tengas en mente, estamos listos y deseosos de llevarlo a cabo. Nuestra filosofía es simple pero poderosa: ponemos tus necesidades al frente de todo lo que hacemos. Si estás buscando un equipo que integre a la perfección la innovación y la flexibilidad, que colabore estrechamente con vos para alcanzar el éxito de tu proyecto, entonces tenemos lo que necesitas.",
+                "desc2": "En Perla, entendemos que el mundo de la tecnología evoluciona constantemente, y estamos emocionados por ser parte de ese viaje. Te damos la bienvenida a un emocionante futuro tecnológico, donde tus ideas se transforman en soluciones innovadoras."
             }
         }
         
@@ -32,8 +33,9 @@
             },
             "aboutUs": {
                 "title": "Digital frontiers",
-                "desc1": "Grupo Perla software desarrolla proyectos a aplicaciones web y soluciones en sistemas para organizaciones y todo tipo de proyectos de gestion integral.",
-                "desc2": "Buscamos flexibilidad y automatización a la hora de trabajar y generar nuestros proyectos. Consideramos que la prolijidad, la sencillez y la escalabilidad son pilares fundamentales de cualquiera de nuestros sistemas."
+                "subtitle": "En Perla, nos enorgullecemos de ser un equipo altamente innovador y versátil",
+                "desc1": "Gracias a nuestra experiencia en el mundo del desarrollo de software, hemos perfeccionado la capacidad de adaptarnos a cualquier desafío que se nos presente.Sin importar el tipo de proyecto que tengas en mente, estamos listos y deseosos de llevarlo a cabo. Nuestra filosofía es simple pero poderosa: ponemos tus necesidades al frente de todo lo que hacemos. Si estás buscando un equipo que integre a la perfección la innovación y la flexibilidad, que colabore estrechamente con vos para alcanzar el éxito de tu proyecto, entonces tenemos lo que necesitas.",
+                "desc2": "En Perla, entendemos que el mundo de la tecnología evoluciona constantemente, y estamos emocionados por ser parte de ese viaje. Te damos la bienvenida a un emocionante futuro tecnológico, donde tus ideas se transforman en soluciones innovadoras."
             }
         }
     }
