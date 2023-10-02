@@ -1,9 +1,9 @@
 "use client"
 import * as THREE from 'three'
 import React, { useRef, useState } from 'react'
-import { Reflector, Text, useTexture,useGLTF, PresentationControls, Float } from '@react-three/drei'
+import { Reflector, Text, useTexture,useGLTF, PresentationControls, Float, useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-
+import { useSpring, animated } from '@react-spring/three';
 
 export default function services() {
 
@@ -18,11 +18,37 @@ export default function services() {
   //   pearlRef.current.rotation.x = rotationX;
   // });
 
+  const scroll = useScroll();
+  const xOffset = -20;
+
+  const [visible, setVisible] = useState(false)
+
+  const servicesSpring = useSpring({
+    position: visible ? [0,-1,0] : [xOffset,-1,0],
+    config : {
+      speed: 0.1,
+      friction: 80,
+      mass: 1
+    }
+  });
+
+  
+  useFrame(
+    (state, delta) => {
+      const currentScroll = scroll.scroll.current;
+      if (currentScroll >= 0.55 && currentScroll < 0.8) {
+        setVisible(true);
+      } else{
+        setVisible(false);
+      }
+  } );
+
+
   return (
-    <group position={[0,-1,0]} className="flex flex-col">
-        <directionalLight color="red" position={[0, 0, 5]} />
+    <animated.group position={servicesSpring.position} className="flex flex-col" >
+      <directionalLight color="red" position={[0, 0, 5]} />
       <Float speed={0.5} floatIntensity={0.5}>
-      <Text position={[0,8,0]} color={'#305BF3'} anchorX="center">Servicios</Text>
+        <Text position={[0,8,0]} color={'#305BF3'} anchorX="center">Servicios</Text>
       </Float>
       <Text position={[-8,7,0]} scale={.5} color={'black'} anchorX="left" >Desarrollo web</Text>
       <Text position={[-8,6.3,0]} scale={.5} color={'black'} anchorX="left" >Desarrollo de software personalizado</Text>
@@ -42,7 +68,7 @@ export default function services() {
         />        
         </Float>
       </PresentationControls>
-    </group>
+    </animated.group>
   )
 }
 

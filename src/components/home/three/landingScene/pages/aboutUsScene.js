@@ -34,11 +34,11 @@ function AboutUsScene({ text }){
   useFrame(
     (state, delta) => {
       // Hacer un mapeo del scroll
-      const activeThreshold = 0.3;
+      const activeThreshold = 0.25;
       const currentScroll = scroll.scroll.current;
 
       // activo sección
-      if(currentScroll > activeThreshold && currentScroll < 0.65){
+      if(currentScroll > activeThreshold && currentScroll < 0.5){
         const localScroll = currentScroll / (1 - activeThreshold);
         setVisible(true);
         meshRef.current.rotation.y += 0.04 * delta;
