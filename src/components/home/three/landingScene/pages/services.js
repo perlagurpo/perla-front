@@ -14,7 +14,7 @@ export default function services() {
   const descriptionFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Thin_PERSONAL_USE.otf', fontSize: 1, letterSpacing: 0.04, lineHeight: 1.2, 'material-toneMapped': false }
 
   const scroll = useScroll();
-  const xOffset = -20;
+  const xOffset = -30;
 
   const [visible, setVisible] = useState(false)
 
