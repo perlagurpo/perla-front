@@ -1,25 +1,21 @@
 "use client"
-import * as THREE from 'three'
 import React, { useRef, useState } from 'react'
-import { Reflector, Text, useTexture,useGLTF, PresentationControls, Float, useScroll } from '@react-three/drei'
+import { Text, useGLTF, PresentationControls, Float, useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three';
 
-export default function services() {
+export default function Services({ text, active }) {
 
   const computerRef = useRef();
   const computerModel = useGLTF('/models/computer/scene.gltf');
-
   const titleFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Black_PERSONAL_USE.otf', fontSize: 1.1, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
   const descriptionFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Thin_PERSONAL_USE.otf', fontSize: 1, letterSpacing: 0.04, lineHeight: 1.2, 'material-toneMapped': false }
-
   const scroll = useScroll();
   const xOffset = -30;
 
-  const [visible, setVisible] = useState(false)
 
   const servicesSpring = useSpring({
-    position: visible ? [0,-1.6,0] : [xOffset,-1,0],
+    position: active ? [0,-1.6,0] : [xOffset,-1,0],
     config : {
       speed: 0.1,
       friction: 80,
@@ -27,25 +23,12 @@ export default function services() {
     }
   });
 
-  
-  useFrame(
-    (state, delta) => {
-      const currentScroll = scroll.scroll.current;
-      if (currentScroll >= 0.55 && currentScroll < 0.8) {
-        setVisible(true);
-      } else{
-        setVisible(false);
-      }
-  } );
-
-
   return (
     <animated.group position={servicesSpring.position} className="flex flex-col">
       <directionalLight color="#305BF3" position={[0, 0, 5]} />
-      {/* <Float speed={0.5} floatIntensity={0.01} > */}
-        <Text position={[0,8,0]} color={'#305BF3'} anchorX="center" {...titleFontProps} >Servicios</Text>
-      {/* </Float> */}
-
+     
+      <Text position={[0,8,0]} color={'#305BF3'} anchorX="center" {...titleFontProps} >Servicios</Text>
+      
       <group position={[0,-0.8,0]}>
         <Text position={[-8,7,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Desarrollo web</Text>
         <Text position={[-8,6.3,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Desarrollo de software personalizado</Text>
@@ -59,15 +42,13 @@ export default function services() {
 
       <group position={[5.8, 0, -3]} rotation={[0,-0.5,0]}>
         <Float rotationIntensity={0} floatIntensity={2} floatingRange={[0, 0.4]}>
-          <PresentationControls polar={[0, 0]} snap={true} speed={1} azimuth={[-45, 45]} config={{ mass: 1, tension: 50, friction: 10 }} >
-            
+          <PresentationControls polar={[0, 0]} snap={true} speed={1} azimuth={[-45, 45]} config={{ mass: 1, tension: 50, friction: 10 }} >       
               <primitive
                 ref={computerRef}
                 object={computerModel.scene}
                 scale={2}
                   
-              />        
-            
+              />            
           </PresentationControls>
         </Float>
       </group>

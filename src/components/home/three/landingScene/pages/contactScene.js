@@ -8,7 +8,7 @@ import * as THREE from 'three';
 /**
  * Escena de Contacto, el formmulario no está incluido (ver en htmlLayout)
  */
-export default function ContactScene() {
+export default function ContactScene({ text, active }) {
   const scroll = useScroll();
   const [visible, setVisible] = useState(0);
   const planeRef = useRef();
