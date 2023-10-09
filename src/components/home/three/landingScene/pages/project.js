@@ -3,8 +3,6 @@ import Carrousel from "../carousel";
 import { useEffect, useRef } from "react";
 
 
-
-
 export default function Project({ data, active }) {
   const sceneRef = useRef();
   const descriptionFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Thin_PERSONAL_USE.otf', fontSize: 0.22, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
@@ -16,7 +14,6 @@ export default function Project({ data, active }) {
       sceneRef.current.visible = active ? true : false;
     }
   ,[active]);
-
 
   return(
     <group ref={sceneRef}>

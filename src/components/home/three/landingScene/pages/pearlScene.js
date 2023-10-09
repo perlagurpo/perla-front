@@ -1,16 +1,18 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Float, PresentationControls, Text, useGLTF, useScroll } from '@react-three/drei';
-import { MathUtils } from 'three';
+import { damp } from 'three/src/math/MathUtils';
 import { VideoTexto } from '@/components/utils/three/videoText';
 
 function PearlScene({ text, active }) {
   const scroll = useScroll();
   const pearl = useGLTF('/models/pearl/source/pearl3.gltf');
   const pearlRef = useRef();
-  const groupRef = useRef();
+  const modelGroupRef = useRef();
   const titleRef = useRef();
   const subtitleRef = useRef();
+  const [visible, setVisible] = useState(true);
+  const modelXInitialPos = -4.5;
   var prevScroll = scroll.scroll.current;
 
   useFrame(
@@ -18,51 +20,53 @@ function PearlScene({ text, active }) {
       const currentScroll = scroll.scroll.current;
       const scrollDelta = currentScroll - prevScroll;
 
-      groupRef.current.position.x = MathUtils.damp(groupRef.current.position.x, -currentScroll * 60, 2, delta);
+      modelGroupRef.current.position.x = damp(modelGroupRef.current.position.x, -currentScroll * 60 + modelXInitialPos, 2, delta);
 
-      titleRef.current.position.y = MathUtils.damp(titleRef.current.position.y, currentScroll * 30 + 4, 2, delta);
-      // subtitleRef.current.position.y = MathUtils.damp(subtitleRef.current.position.y, currentScroll * 20 + 3, 2, delta);
-      // subtitleRef.current.position.z = MathUtils.damp(subtitleRef.current.position.z, currentScroll * 1 + 4, 2, delta);
+      titleRef.current.position.y = damp(titleRef.current.position.y, currentScroll * 30 + 4.3, 2, delta);
+      subtitleRef.current.position.y = damp(subtitleRef.current.position.y, currentScroll * 20 + 3.5, 2, delta);
+      subtitleRef.current.position.z = damp(subtitleRef.current.position.z, currentScroll * 1 + 5, 2, delta);
 
       if(scrollDelta > 0 ) {
         const pearlRotationY = pearlRef.current.rotation.y;
-        pearlRef.current.rotation.y = MathUtils.damp(pearlRotationY, pearlRotationY + 10, 1, delta);
+        pearlRef.current.rotation.y = damp(pearlRotationY, pearlRotationY + 10, 1, delta);
       }
       prevScroll = currentScroll;
     }
   );
   
+  useEffect(
+    () => {
+      // Pequeño ajuste para poder dejar de renderizar la escena cuando no está en la pantalla
+      setTimeout(() => setVisible(active), active ? 50 : 700);
+    }
+  ,[active]);
 
   return(
-    <group>
+    <group visible={visible}>
       {/* <OrbitControls /> */}
-      <group ref={groupRef}>
+      <group ref={modelGroupRef}>
         <directionalLight color="blue" position={[0, 10, 0]} intensity={0.31}/>
         <PresentationControls polar={[0, 0]} speed={10} config={{ mass: 0.1, tension: 170, friction: 26 }} >
-          <Float rotationIntensity={0} floatIntensity={2} floatingRange={[0, 1]}>
-          <primitive
-            object={ pearl.scene }
-            ref={pearlRef}
-            scale={ 2 }
-            position={ [ 0, 0, 0 ] }
-          />
+          <Float rotationIntensity={0} floatIntensity={1.5} floatingRange={[0, 1]}>
+            <primitive
+              object={ pearl.scene }
+              ref={pearlRef}
+              scale={ 2 }
+              position={ [ 0, 0, 0 ] }
+            />
           </Float>
         </PresentationControls>
       </group>
-      {/* <mesh position={[1,1,0]} scale={4} rotation={[-Math.PI/2, 0 , 0 ]} >
-        <planeGeometry />
-      </mesh> */}
 
+      <group ref={titleRef} position={[2,4,4]}>
+        <VideoTexto texto={"Perla labs"} videoSource={'/video/naturaleza.mp4'} fontSize={4} />
+      </group>
       {/* <Text position={[3,2,4]} scale={1.5} color="black" ref={titleRef}>
         {text.title}
       </Text> */}
-      {/* <Text position={[3,-2,5]} scale={1} color="black" ref={subtitleRef}>
+      <Text position={[3,-4,6]} scale={1} color="black" ref={subtitleRef}>
         {text.subtitle}
-      </Text> */}
-      
-      <group ref={titleRef} position={[0,0,4]}>
-        <VideoTexto texto={"Perla labs"} videoSource={'/video/naturaleza.mp4'} />
-      </group>
+      </Text>
     </group>
   );
 }

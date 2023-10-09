@@ -20,10 +20,10 @@ export default function ScrollManager({ pagesState, setPagesState, children }) {
         if (i == page) {
           updatedState[i] = true;
         } else {
-          updatedState[i] = false
+          updatedState[i] = false;
         }
       }
-      setPagesState({ "currentPage" : page, "activePages": updatedState });
+      setPagesState({ "currentPage" : page, "localScroll": 0, "activePages": updatedState });
     }
 
     useEffect(
@@ -47,9 +47,7 @@ export default function ScrollManager({ pagesState, setPagesState, children }) {
 
     return(
       <>
-        {
-          children
-        }
+        { children }
       </>
     );
 }
