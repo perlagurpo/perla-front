@@ -3,11 +3,10 @@ import { useFrame } from '@react-three/fiber';
 import { Float, PresentationControls, Text, useGLTF, useScroll } from '@react-three/drei';
 import { MathUtils } from 'three';
 import { VideoTexto } from '@/components/utils/three/videoText';
-import RippleShader from '@/components/utils/three/shaderComponent';
 
-function PearlScene({ text }) {
+function PearlScene({ text, active }) {
   const scroll = useScroll();
-  const pearl = useGLTF('/pearl/source/pearl3.gltf');
+  const pearl = useGLTF('/models/pearl/source/pearl3.gltf');
   const pearlRef = useRef();
   const groupRef = useRef();
   const titleRef = useRef();
@@ -64,7 +63,6 @@ function PearlScene({ text }) {
       <group ref={titleRef} position={[0,0,4]}>
         <VideoTexto texto={"Perla labs"} videoSource={'/video/naturaleza.mp4'} />
       </group>
-      <RippleShader />
     </group>
   );
 }

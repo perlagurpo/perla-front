@@ -4,7 +4,7 @@ import { useScroll, Text, Float } from "@react-three/drei";
 import { animated, useSpring } from "@react-spring/three";
 import * as THREE from 'three';
 
-function AboutUsScene({ text }){
+function AboutUsScene({ text, active }){
   const scroll = useScroll();
   const meshRef = useRef();
   const groupRef = useRef();
@@ -17,41 +17,23 @@ function AboutUsScene({ text }){
   const titleFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Black_PERSONAL_USE.otf', fontSize: 1.1, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
   const subTitleFontProps = { font: '/fonts/made_tommy_soft/mt_Medium.otf', fontSize: 0.25, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
 
-  const [visible, setVisible] = useState(false);
+  // const [visible, setVisible] = useState(false);
 
   const ballSprings = useSpring({
-    position: visible ? [-9,1.8,0] : [-20,1.8,0],
+    position: active ? [-9,1.8,0] : [-20,1.8,0],
     config : {
       speed: 0.1,
     }
   });
 
   const springs = useSpring({
-    opacity: visible ? 1 : 0,
-    position: visible ? [0,0,0] : [15,0,0],
+    opacity: active ? 1 : 0,
+    position: active ? [0,0,0] : [15,0,0],
     config : {
       friction: 100,
       mass: 20,
     }
   })
-
-  useFrame(
-    (state, delta) => {
-      // Hacer un mapeo del scroll
-      const activeThreshold = 0.25;
-      const currentScroll = scroll.scroll.current;
-
-      // activo sección
-      if(currentScroll > activeThreshold && currentScroll < 0.5){
-        const localScroll = currentScroll / (1 - activeThreshold);
-        setVisible(true);
-        meshRef.current.rotation.y += 0.04 * delta;
-        meshRef.current.rotation.x += 0.07 * delta ;
-      } else {
-        setVisible(false);
-      }
-    }
-  );
 
   return(
     <group ref={sceneRef}>
@@ -88,3 +70,22 @@ function AboutUsScene({ text }){
 }
 
 export default AboutUsScene;
+
+
+
+  // useFrame(
+  //   (state, delta) => {
+  //     // Hacer un mapeo del scroll
+  //     const activeThreshold = 0.25;
+  //     const currentScroll = scroll.scroll.current;
+  //     // activo sección
+  //     // if(currentScroll > activeThreshold && currentScroll < 0.5){
+  //     //   const localScroll = currentScroll / (1 - activeThreshold);
+  //     //   setVisible(true);
+  //     //   meshRef.current.rotation.y += 0.04 * delta;
+  //     //   meshRef.current.rotation.x += 0.07 * delta ;
+  //     // } else {
+  //     //   setVisible(false);
+  //     // }
+  //   }
+  // );

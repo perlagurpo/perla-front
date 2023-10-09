@@ -15,9 +15,16 @@
                 "subtitle": "En Perla, nos enorgullecemos de ser un equipo altamente innovador y versátil",
                 "desc1": "Gracias a nuestra experiencia en el mundo del desarrollo de software, hemos perfeccionado la capacidad de adaptarnos a cualquier desafío que se nos presente.Sin importar el tipo de proyecto que tengas en mente, estamos listos y deseosos de llevarlo a cabo. Nuestra filosofía es simple pero poderosa: ponemos tus necesidades al frente de todo lo que hacemos. Si estás buscando un equipo que integre a la perfección la innovación y la flexibilidad, que colabore estrechamente con vos para alcanzar el éxito de tu proyecto, entonces tenemos lo que necesitas.",
                 "desc2": "En Perla, entendemos que el mundo de la tecnología evoluciona constantemente, y estamos emocionados por ser parte de ese viaje. Te damos la bienvenida a un emocionante futuro tecnológico, donde tus ideas se transforman en soluciones innovadoras."
+            },
+            "projects": {
+                "Pese": {
+                    "title": "Portfolio Pedro Serrano",
+                    "description": "Diseño UX e implementación de sitio web para portfolio artístico personal",
+                    "images": ["/img/projects/pese/pese2.png", "/img/projects/pese/pese1.png","/img/projects/pese/pese3.png"]
+                }
             }
         }
-        
+
     },
 
     "EN": {
