@@ -13,8 +13,8 @@ function AboutUsScene({ text, active }){
   const descriptionOneRef = useRef();
   const descriptionTwoRef = useRef();
   
-  const descriptionFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Thin_PERSONAL_USE.otf', fontSize: 0.22, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
-  const titleFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Black_PERSONAL_USE.otf', fontSize: 1.1, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
+  const descriptionFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Thin_PERSONAL_USE.otf', fontSize: 0.22, letterSpacing: 0.04, lineHeight: 1.4, 'material-toneMapped': false }
+  const titleFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Bold_PERSONAL_USE.otf', fontSize: 1.2, letterSpacing: 0.02, lineHeight: 1.1, 'material-toneMapped': false }
   const subTitleFontProps = { font: '/fonts/made_tommy_soft/mts_Medium.otf', fontSize: 0.25, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
 
   // const [visible, setVisible] = useState(false);
@@ -51,10 +51,10 @@ function AboutUsScene({ text, active }){
       
       <animated.group opacity={springs.opacity} position={springs.position}>
         <group ref={textRef}>
-          <Text position={[2.3,6.5,4]} {...titleFontProps} scale={1} color="#305BF3">
+          <Text position={[2.15,6.5,4]} {...titleFontProps} scale={1} color="#305BF3">
             {text.title}
           </Text>
-          <Text position={[3.1,5.5,4]} {...subTitleFontProps} scale={1} color="black">
+          <Text position={[3.1,5.6,4]} {...subTitleFontProps} scale={1} color="black">
             {text.subtitle}
           </Text>
           <Text position={[4,4,4]} {...descriptionFontProps} textAlign="right" maxWidth={8} scale={1} color="black">
