@@ -14,21 +14,37 @@ export default function ContactSection(){
 
   useEffect(
     () => {
-      scroll > 0.82 ? setVisible(true) : setVisible(false);
-      scroll > 0.82 ? setOpacity(1) : setOpacity(0);
+      scroll >= 0.82 && !visible && toggleVisibility(true);
+      scroll < 0.83 && visible && toggleVisibility(false);
     }
   ,[scroll]);
+
+  /**
+   * Función para setear los cambios que hacen visible al componente
+   * Recible un booleano que indica si el componente será visible o no
+   * Utiliza un delay para setear el efecto de transición de opacidad de forma prolija
+   * @param {boolean} nextVal 
+   */
+  function toggleVisibility(nextVal) {
+    if (nextVal) {
+      setVisible(nextVal);
+      setTimeout(() => setOpacity(1), 150);
+    } else {
+      setOpacity(0);
+      setTimeout(() => setVisible(nextVal), 100);
+    }
+  }
 
   return(
     <div style={{ 
             opacity: opacity,
-            transition: "all 1.5s 0.1s",
+            display: visible ? "flex" : "none",
+            transition: "all 1s 0.1s",
             position: "absolute",
             top: "25%",
             right: "10%",
-            transform: visible ? "translateX(0)" : "translateX(100vw)"
             }}>
-      <div >
+      <div>
         <ContactForm />
       </div>
     </div>

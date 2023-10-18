@@ -39,7 +39,6 @@ export default function ScrollManager({ pagesState, setPagesState, children }) {
         const currentScroll = scroll.scroll.current;
         const currentPage = Math.floor(currentScroll / scrollPerPage);
         if (currentPage != pagesState.currentPage) {
-          console.log("actualizo" + pagesState.currentPage + currentPage)
           setPagesStatus(currentPage);
         }
       }

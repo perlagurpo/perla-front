@@ -23,8 +23,8 @@ function PearlScene({ text, active }) {
       modelGroupRef.current.position.x = damp(modelGroupRef.current.position.x, -currentScroll * 60 + modelXInitialPos, 2, delta);
 
       titleRef.current.position.y = damp(titleRef.current.position.y, currentScroll * 30 + 4.3, 2, delta);
-      subtitleRef.current.position.y = damp(subtitleRef.current.position.y, currentScroll * 20 + 3.5, 2, delta);
-      subtitleRef.current.position.z = damp(subtitleRef.current.position.z, currentScroll * 1 + 5, 2, delta);
+      // subtitleRef.current.position.y = damp(subtitleRef.current.position.y, currentScroll * 20 + 3.5, 2, delta);
+      // subtitleRef.current.position.z = damp(subtitleRef.current.position.z, currentScroll * 1 + 5, 2, delta);
 
       if(scrollDelta > 0 ) {
         const pearlRotationY = pearlRef.current.rotation.y;
@@ -59,14 +59,12 @@ function PearlScene({ text, active }) {
       </group>
 
       <group ref={titleRef} position={[2,4,4]}>
-        <VideoTexto texto={"Perla labs"} videoSource={'/video/naturaleza.mp4'} fontSize={4} />
+        <VideoTexto texto={"Perla software"} videoSource={'/video/naturaleza.mp4'} fontSize={2.6} />
       </group>
-      {/* <Text position={[3,2,4]} scale={1.5} color="black" ref={titleRef}>
-        {text.title}
-      </Text> */}
-      <Text position={[3,-4,6]} scale={1} color="black" ref={subtitleRef}>
+      
+      {/* <Text position={[3,-4,6]} scale={1} color="black" ref={subtitleRef}>
         {text.subtitle}
-      </Text>
+      </Text> */}
     </group>
   );
 }
