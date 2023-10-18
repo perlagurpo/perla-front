@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/three";
 import { MeshPhongMaterial } from "three";
 import Project from "./project";
+import { Text } from "@react-three/drei";
 
 
 export default function Projects({ projects=[], active=false }) {
@@ -20,8 +21,9 @@ export default function Projects({ projects=[], active=false }) {
   const projectsSprings = projects.map(
       (pr, i) => {
         return useSpring({
-          position: activeProject == i ? [0,0,0] : [20,0,0],
+          position: activeProject == i ? [0,0,0] : [projectsGap,0,-0.01],
           // active: [projects.map((pr,i) => true)],
+          scale: activeProject == i ? 1 : 0.98,
           config : {
             friction: 100,
             mass: 20,
@@ -30,7 +32,6 @@ export default function Projects({ projects=[], active=false }) {
       }
   );
     
-  
   function browseProjects(direction="forwards") {
     if (direction == "forwards") {
       if(activeProject < (projects.length - 1)) {
@@ -45,7 +46,6 @@ export default function Projects({ projects=[], active=false }) {
     }
   }
 
-
   useEffect(
     () => {
       setTimeout(() => setGroupVisibility(active), active ? 400 : 500);
@@ -59,31 +59,39 @@ export default function Projects({ projects=[], active=false }) {
         projects.map(
           (project, i) => {
             return(
-              <animated.group position={projectsSprings[i].position} key={i}>
+              <animated.group position={projectsSprings[i].position} scale={projectsSprings[i].scale} key={i}>
                 <Project data={project} active={true} />
               </animated.group>
             );
           }
         )
       }
-      <BrowseElement position={[7,3.5,0]} size={[0.1,2,0.3]} onClick={() => browseProjects("forwards")} />
-      <BrowseElement position={[-7,3.5,0]} size={[0.1,2,0.3]} onClick={() => browseProjects("backwards")} />
-      
+      <BrowseElement position={[7,3.5,0]} text={">"} onClick={() => browseProjects("forwards")} />
+      <BrowseElement position={[-7,3.5,0]} text={"<"} onClick={() => browseProjects("backwards")} />
     </animated.group>
   );
 
 }
 
 
-function BrowseElement({ size=[2,2,0.3], position, onClick }) {
+function BrowseElement({ position, onClick, text }) {
+  const browseElementRef = useRef();
+  const [hovered, setHovered] = useState(false);
+  const browseElementSpring = useSpring({
+    opacity: hovered ? 0.9 : 0,
+    scale: hovered ? 1.1 : 1,
+    color: hovered ? "#305BF3" : "#8a817c"
+  });
+
   return(
-    <mesh material={new MeshPhongMaterial({color: "grey"})}
-          onClick={onClick}
-          
-          position={position}
-          visible={true}
-          >
-        <boxGeometry args={size} />
-    </mesh>
+    <animated.group ref={browseElementRef} position={position} opacity={browseElementSpring.opacity} scale={browseElementSpring.scale}>
+      <Text onClick={onClick}
+            onPointerEnter={() => setHovered(true)}
+            onPointerLeave={() => setHovered(false)}
+            color={browseElementSpring.color}
+            >
+              {text}
+      </Text>
+    </animated.group>
   );
 }

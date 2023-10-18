@@ -93,7 +93,7 @@ export default function Navbar() {
           <svg className="w-6 h-6 fill-perla-primary" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
         </button>
         <div className="flex flex-row hidden w-full h-full md:block md:w-auto" id="navbar-default">
-          <ul className={`flex flex-col items-center p-4 mt-4 md:p-0 md:flex-row md:gap-x-[6em] md:mt-0 md:border-0 font-semibold ${scroll > 0.02 && "text-black"} transition duration-500`}>
+          <ul className={`flex flex-col items-center p-4 mt-4 md:p-0 md:flex-row md:gap-x-[6em] md:mt-0 md:border-0 font-semibold ${scroll > 0.02 && scroll < 0.85 && "text-black"} transition duration-300`}>
             <li>
               <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
                 { content["navbar"].about }
@@ -105,7 +105,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-300">
+              <Link href="/contact" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
                 { content["navbar"].contact }
               </Link>
             </li>
