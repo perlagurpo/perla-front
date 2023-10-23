@@ -20,12 +20,14 @@
                 "Pese": {
                     "title": "Portfolio Pedro Serrano",
                     "description": "Diseño UX e implementación de sitio web para portfolio artístico personal",
-                    "images": ["/img/projects/pese/pese2.png", "/img/projects/pese/pese1.png","/img/projects/pese/pese3.png"]
+                    "images": ["/img/projects/pese/pese2.png", "/img/projects/pese/pese1.png","/img/projects/pese/pese3.png"],
+                    "link": "https://peserrano.com/"
                 },
                 "Templo": {
                     "title": "El templo",
                     "description": "Diseño UX e implementaciónd de sitio web para El Templo",
-                    "images": ["/img/projects/templo/templo2.png", "/img/projects/templo/templo1.png","/img/projects/templo/templo3.png"]
+                    "images": ["/img/projects/templo/templo2.png", "/img/projects/templo/templo1.png","/img/projects/templo/templo3.png"],
+                    "link": "https://eltemplo.net/"
                 },
                 "Qpampa": {
                     "title": "Q-pampa",
@@ -57,12 +59,14 @@
                 "Pese": {
                     "title": "Pedro Serrano Artistic Portfolio",
                     "description": "UX Design and web programming for photographer artistic portfolio",
-                    "images": ["/img/projects/pese/pese2.png", "/img/projects/pese/pese1.png","/img/projects/pese/pese3.png"]
+                    "images": ["/img/projects/pese/pese2.png", "/img/projects/pese/pese1.png","/img/projects/pese/pese3.png"],
+                    "link": "https://peserrano.com/"
                 },
                 "Templo": {
                     "title": "El templo website",
                     "description": "UX Design and web programming for El Templo, an innovative gym enterprise",
-                    "images": ["/img/projects/templo/templo2.png", "/img/projects/templo/templo1.png","/img/projects/templo/templo3.png"]
+                    "images": ["/img/projects/templo/templo2.png", "/img/projects/templo/templo1.png","/img/projects/templo/templo3.png"],
+                    "link": "https://eltemplo.net/"
                 },
                 "Qpampa": {
                     "title": "Q-pampa",

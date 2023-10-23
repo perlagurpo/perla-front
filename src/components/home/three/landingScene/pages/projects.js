@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/three";
-import { MeshPhongMaterial } from "three";
+import { Color } from "three";
 import Project from "./project";
 import { Text } from "@react-three/drei";
 
@@ -31,7 +31,7 @@ export default function Projects({ projects=[], active=false }) {
         });
       }
   );
-    
+  
   function browseProjects(direction="forwards") {
     if (direction == "forwards") {
       if(activeProject < (projects.length - 1)) {
@@ -66,29 +66,37 @@ export default function Projects({ projects=[], active=false }) {
           }
         )
       }
-      <BrowseElement position={[7,3.5,0]} text={">"} onClick={() => browseProjects("forwards")} />
-      <BrowseElement position={[-7,3.5,0]} text={"<"} onClick={() => browseProjects("backwards")} />
+      <BrowseElement position={[7,3.5,0]} text={">"} active={activeProject < (projectsSprings.length - 1)} onClick={() => browseProjects("forwards")} />
+      <BrowseElement position={[-7,3.5,0]} text={"<"} active={activeProject > 0} onClick={() => browseProjects("backwards")} />
     </animated.group>
   );
 
 }
 
 
-function BrowseElement({ position, onClick, text }) {
+function BrowseElement({ position, onClick, text, active }) {
   const browseElementRef = useRef();
+  const textRef = useRef();
   const [hovered, setHovered] = useState(false);
   const browseElementSpring = useSpring({
     opacity: hovered ? 0.9 : 0,
     scale: hovered ? 1.1 : 1,
-    color: hovered ? "#305BF3" : "#8a817c"
   });
 
+  useEffect(
+    () => {
+      document.body.style.cursor = hovered ? "pointer" : "auto";
+      textRef.current.color = hovered ? "white" : "#D9D9D9";
+    }
+  , [hovered]);
+
   return(
-    <animated.group ref={browseElementRef} position={position} opacity={browseElementSpring.opacity} scale={browseElementSpring.scale}>
+    <animated.group ref={browseElementRef} position={position} opacity={browseElementSpring.opacity} scale={browseElementSpring.scale} visible={active}>
       <Text onClick={onClick}
             onPointerEnter={() => setHovered(true)}
             onPointerLeave={() => setHovered(false)}
-            color={browseElementSpring.color}
+            color={"#D9D9D9"}
+            ref={textRef}
             >
               {text}
       </Text>
