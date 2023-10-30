@@ -1,26 +1,24 @@
-import { useRef, useState } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import { useThree } from "@react-three/fiber";
 import { useScroll, Text, Float } from "@react-three/drei";
 import { animated, useSpring } from "@react-spring/three";
 import * as THREE from 'three';
 
 function AboutUsScene({ text, active }){
-  const scroll = useScroll();
+
   const meshRef = useRef();
   const groupRef = useRef();
   const sceneRef = useRef();
   const textRef = useRef();
-  const descriptionOneRef = useRef();
-  const descriptionTwoRef = useRef();
   
   const descriptionFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Thin_PERSONAL_USE.otf', fontSize: 0.22, letterSpacing: 0.04, lineHeight: 1.4, 'material-toneMapped': false }
   const titleFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Bold_PERSONAL_USE.otf', fontSize: 1.2, letterSpacing: 0.02, lineHeight: 1.1, 'material-toneMapped': false }
   const subTitleFontProps = { font: '/fonts/made_tommy_soft/mts_Medium.otf', fontSize: 0.25, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
 
-  // const [visible, setVisible] = useState(false);
+  const { viewport } = useThree();
 
   const ballSprings = useSpring({
-    position: active ? [-9,1.8,0] : [-20,1.8,0],
+    position: active ? [- viewport.width / 3 ,1.8,0] : [-20,1.8,0],
     config : {
       speed: 0.1,
     }
@@ -37,7 +35,7 @@ function AboutUsScene({ text, active }){
 
   return(
     <group ref={sceneRef}>
-      <animated.group ref={groupRef} position={ballSprings.position}>
+      <animated.group ref={groupRef} position={ballSprings.position} scale={ viewport.width / 20 }>
         <Float floatIntensity={0.5}>         
           <mesh ref={meshRef}
                 material={new THREE.MeshNormalMaterial({ flatShading: true })}
@@ -49,7 +47,7 @@ function AboutUsScene({ text, active }){
         </Float>
       </animated.group>
       
-      <animated.group opacity={springs.opacity} position={springs.position}>
+      <animated.group opacity={springs.opacity} position={springs.position} scale={ viewport.width < 17 ? viewport.width / 17 : 1}>
         <group ref={textRef}>
           <Text position={[2.15,6.5,4]} {...titleFontProps} scale={1} color="#305BF3">
             {text.title}
