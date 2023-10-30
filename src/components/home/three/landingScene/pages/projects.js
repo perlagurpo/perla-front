@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/three";
-import { Color } from "three";
 import Project from "./project";
 import { Text } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 
 
 export default function Projects({ projects=[], active=false }) {
   const projectsGap = 20;
   const [activeProject, setActiveProject] = useState(0);
   const [groupVisibility, setGroupVisibility] = useState(false);
+
+  const breakPoint = 15.5;
+  const { viewport } = useThree();
 
   const sectionSpring = useSpring({
     position: active ? [0,0,0] : [0,-20,0],
@@ -54,7 +57,7 @@ export default function Projects({ projects=[], active=false }) {
   
 
   return(
-    <animated.group position={sectionSpring.position} visible={groupVisibility}>
+    <animated.group position={sectionSpring.position} visible={groupVisibility} scale={ viewport.width < breakPoint ? viewport.width / breakPoint : 1 }>
       {
         projects.map(
           (project, i) => {

@@ -8,7 +8,7 @@
         "canvas": {
             "hero": {
                 "title": "Perla Labs",
-                "subtitle": "subtítulo"
+                "subtitle": ""
             },
             "aboutUs": {
                 "title": "Horizontes digitales",
@@ -32,7 +32,8 @@
                 "Qpampa": {
                     "title": "Q-pampa",
                     "description": "Diseño UX e implementaciónd de sitio web para Q-Pampa",
-                    "images": ["/img/projects/qpampa/qpampa2.png", "/img/projects/qpampa/qpampa1.png","/img/projects/qpampa/qpampa3.png"]
+                    "images": ["/img/projects/qpampa/qpampa2.png", "/img/projects/qpampa/qpampa1.png","/img/projects/qpampa/qpampa3.png"],
+                    "link": "https://qpampa.com/"
                 }
             }
         }
@@ -47,7 +48,7 @@
         "canvas": {
             "hero": {
                 "title": "Perla Labs",
-                "subtitle": "sub"
+                "subtitle": ""
             },
             "aboutUs": {
                 "title": "Digital frontiers",
@@ -71,7 +72,8 @@
                 "Qpampa": {
                     "title": "Q-pampa",
                     "description": "UX Design and web programming Q-Pampa",
-                    "images": ["/img/projects/qpampa/qpampa2.png", "/img/projects/qpampa/qpampa1.png","/img/projects/qpampa/qpampa3.png"]
+                    "images": ["/img/projects/qpampa/qpampa2.png", "/img/projects/qpampa/qpampa1.png","/img/projects/qpampa/qpampa3.png"],
+                    "link": "https://qpampa.com/"
                 }
             }
         }

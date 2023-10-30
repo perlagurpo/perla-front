@@ -82,10 +82,10 @@ export default function Navbar() {
 
   return(
     <nav className={`sticky flex flex-col z-10 items-center bg-black font-['made-tommy-regular'] transition duration-500`} style={{ 'backgroundColor' : `rgba(0, 0, 0, ${ scroll > 0.02 ? '0' : '1' }`}}>
-      <div className="min-w-full flex flex-wrap items-center justify-between py-2 md:px-[5em] lg:px-[12em]">
+      <div className="min-w-full flex flex-row items-center justify-between py-2 md:px-[5em] lg:px-[12em]">
         <Link href="/" className="flex items-center">
           <img src="/img/perla.png" className="h-10 px-6" alt="Perla Labs" />
-          <h1 className='text-lg text-perla-primary'>{ scroll }</h1>
+          {/* <h1 className='text-lg text-perla-primary'>{ scroll }</h1> */}
         </Link>
         <button onClick={() => setMenuOpened(!menuOpened)}
                 type="button" 
@@ -93,25 +93,28 @@ export default function Navbar() {
           <svg className="w-6 h-6 fill-perla-primary" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
         </button>
         <div className="flex flex-row hidden w-full h-full md:block md:w-auto" id="navbar-default">
-          <ul className={`flex flex-col items-center p-4 mt-4 md:p-0 md:flex-row md:gap-x-[6em] md:mt-0 md:border-0 font-semibold ${scroll > 0.02 && scroll < 0.85 && "text-black"} transition duration-300`}>
+          <ul className={`flex flex-col items-center p-4 mt-4 md:p-0 md:flex-row md:gap-x-10 xl:gap-x-[6em] md:mt-0 md:border-0 font-semibold ${scroll > 0.02 && scroll < 0.85 && "text-black"} transition duration-300`}>
             <li>
-              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
+              <Link href="/" className="block py-2 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
                 { content["navbar"].about }
               </Link>
             </li>
             <li>
-              <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
+              <Link href="/" className="block py-2  rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
                 { content["navbar"].projects }
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
+              <Link href="/contact" className="block py-2  rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
                 { content["navbar"].contact }
               </Link>
             </li>
                                 
        
-            <li className="flex flex-row items-center gap-2 tracking-wide">
+            <li className="flex  md:flex-row-reverse items-center gap-2 tracking-wide">
+              <div onClick={() => toggleConfigMenu()} className={`cursor-pointer ${configMenuOpened && "rotate-90"} hover:opacity-80 transition duration-300`}>
+                <GearIcon width={'20px'} height={'20px'} />
+              </div>
               {/* Menú de configuración */}
               <div className={`${configMenuOpened ? "flex flex-row" : "hidden" }
                                 items-center min-w-md gap-6 rounded-xl
@@ -126,9 +129,6 @@ export default function Navbar() {
                     >
                   lite
                 </p>
-              </div>
-              <div onClick={() => toggleConfigMenu()} className={`cursor-pointer ${configMenuOpened && "rotate-90"} hover:opacity-80 transition duration-300`}>
-                <GearIcon width={'20px'} height={'20px'} />
               </div>
             </li>
           </ul>

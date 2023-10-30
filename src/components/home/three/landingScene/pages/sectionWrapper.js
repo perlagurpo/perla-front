@@ -4,8 +4,9 @@
  */
 export default function SectionWrapper({ children, yOffset=0 }) {
 
+
   return(
-    <group position={[0,yOffset,0]}>
+    <group position={[0,yOffset,0]} scale={[1, 1, 1]}>
       { children }
     </group>
   );

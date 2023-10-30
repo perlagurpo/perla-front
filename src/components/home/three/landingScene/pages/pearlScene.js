@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useFrame, useThree } from '@react-three/fiber';
 import { Float, PresentationControls, Text, useGLTF, useScroll } from '@react-three/drei';
 import { damp } from 'three/src/math/MathUtils';
 import { VideoTexto } from '@/components/utils/three/videoText';
@@ -12,15 +12,17 @@ function PearlScene({ text, active }) {
   const titleRef = useRef();
   const subtitleRef = useRef();
   const [visible, setVisible] = useState(true);
-  const modelXInitialPos = -4.5;
+  
   var prevScroll = scroll.scroll.current;
+
+  const { viewport } = useThree();
 
   useFrame(
     (state, delta) => {
       const currentScroll = scroll.scroll.current;
       const scrollDelta = currentScroll - prevScroll;
-
-      modelGroupRef.current.position.x = damp(modelGroupRef.current.position.x, -currentScroll * 60 + modelXInitialPos, 2, delta);
+      let modelBasePos = - viewport.width / 5
+      modelGroupRef.current.position.x = damp(modelGroupRef.current.position.x, -currentScroll * 60 + modelBasePos, 2, delta);
 
       titleRef.current.position.y = damp(titleRef.current.position.y, currentScroll * 30 + 4.3, 2, delta);
       // subtitleRef.current.position.y = damp(subtitleRef.current.position.y, currentScroll * 20 + 3.5, 2, delta);
@@ -44,7 +46,7 @@ function PearlScene({ text, active }) {
   return(
     <group visible={visible}>
       {/* <OrbitControls /> */}
-      <group ref={modelGroupRef}>
+      <group ref={modelGroupRef} scale={ viewport.width / 18 }>
         <directionalLight color="blue" position={[0, 10, 0]} intensity={0.31}/>
         <PresentationControls polar={[0, 0]} speed={10} config={{ mass: 0.1, tension: 170, friction: 26 }} >
           <Float rotationIntensity={0} floatIntensity={1.5} floatingRange={[0, 1]}>
@@ -58,7 +60,7 @@ function PearlScene({ text, active }) {
         </PresentationControls>
       </group>
 
-      <group ref={titleRef} position={[2,4,4]}>
+      <group ref={titleRef} position={[2,4,4]} scale={ viewport.width / 25 }>
         <VideoTexto texto={"Perla software"} videoSource={'/video/naturaleza.mp4'} fontSize={2.6} />
       </group>
       

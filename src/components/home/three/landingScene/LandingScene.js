@@ -10,7 +10,7 @@ import PearlScene from './pages/pearlScene';
 import ContactScene from './pages/contactScene';
 import Services from './pages/services';
 import Projects from './pages/projects';
-import Project from './pages/project';
+import { useThree } from '@react-three/fiber';
 
 /**
  * Escena con hero scrolleable
@@ -18,7 +18,6 @@ import Project from './pages/project';
 function Scene({ textContent={} }){
 
   const [pagesState, setPagesState] = useState({ "activePages": [true, false, false, false, false], "currentPage": 0, "localScroll": 0 });
-
 
   return(
     <>
