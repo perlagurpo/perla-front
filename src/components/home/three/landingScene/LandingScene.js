@@ -34,7 +34,7 @@ function Scene({ textContent={} }){
             {/* Componentes para cada escena de la HomePage */}
             <PearlScene text={textContent.hero} active={pagesState.activePages[0]} />
             <AboutUsScene text={textContent.aboutUs} active={pagesState.activePages[1]} />
-            <Services active={pagesState.activePages[2]} />
+            <Services text={textContent.services} active={pagesState.activePages[2]} />
             <Projects projects={Object.values(textContent.projects)} active={pagesState.activePages[3]} />
             <ContactScene active={pagesState.activePages[4]} />
           </ScrollManager>

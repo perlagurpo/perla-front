@@ -16,6 +16,19 @@
                 "desc1": "Gracias a nuestra experiencia en el mundo del desarrollo de software, hemos perfeccionado la capacidad de adaptarnos a cualquier desafío que se nos presente.Sin importar el tipo de proyecto que tengas en mente, estamos listos y deseosos de llevarlo a cabo. Nuestra filosofía es simple pero poderosa: ponemos tus necesidades al frente de todo lo que hacemos. Si estás buscando un equipo que integre a la perfección la innovación y la flexibilidad, que colabore estrechamente con vos para alcanzar el éxito de tu proyecto, entonces tenemos lo que necesitas.",
                 "desc2": "En Perla, entendemos que el mundo de la tecnología evoluciona constantemente, y estamos emocionados por ser parte de ese viaje. Te damos la bienvenida a un emocionante futuro tecnológico, donde tus ideas se transforman en soluciones innovadoras."
             },
+            "services": {
+                "title": "Servicios",
+                "services": {
+                    "web": "Desarollo web",
+                    "software": "Desarrollo de software personalizado",
+                    "sys": "Integración de sistemas",
+                    "ux": "Diseño UX-UI",
+                    "botsData": "Bots de análisis de datos",
+                    "marketing": "Automatización de marketing",
+                    "botsCliente": "Bots de servicio al cliente",
+                    "botsLMM": "Bots basados en LLMs"
+                }
+            },
             "projects": {
                 "Pese": {
                     "title": "Portfolio Pedro Serrano",
@@ -55,6 +68,19 @@
                 "subtitle": "At Perla, we are proud of being a highly innovative and versatile team",
                 "desc1": "Thanks to our wide experience in software design, we have mastered our ability to adapt to new challenges. It doesn't matter the type of project you are thinking about, we are ready and willing to make it real. Our philosophy is simple but powerful: we put your needs in the first place, and that's what guides each action we take in our development process. If you are looking for a team that can colaborate with you to achieve your project goals, combining innovation and flexibility, then we have what you need.",
                 "desc2": "En Perla, entendemos que el mundo de la tecnología evoluciona constantemente, y estamos emocionados por ser parte de ese viaje. Te damos la bienvenida a un emocionante futuro tecnológico, donde tus ideas se transforman en soluciones innovadoras."
+            },
+            "services": {
+                "title": "Services",
+                "services": {
+                    "web": "Web development",
+                    "software": "Custom software development",
+                    "sys": "System integration",
+                    "ux": "UX-UI design",
+                    "botsData": "Data analysis bot development",
+                    "marketing": "Marketing automation",
+                    "botsCliente": "Customer service bot development",
+                    "botsLMM": "LLM based bots"
+                }
             },
             "projects": {
                 "Pese": {

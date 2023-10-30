@@ -10,6 +10,8 @@ export default function Services({ text, active }) {
   const computerModel = useGLTF('/models/computer/scene.gltf');
   const titleFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Black_PERSONAL_USE.otf', fontSize: 1.1, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
   const descriptionFontProps = { font: '/fonts/made_tommy_soft/mt_Soft_Thin_PERSONAL_USE.otf', fontSize: 1, letterSpacing: 0.04, lineHeight: 1.2, 'material-toneMapped': false }
+  const servicesContent = Object.values(text.services);
+
   const xOffset = -30;
 
   const { viewport } = useThree();
@@ -28,17 +30,22 @@ export default function Services({ text, active }) {
     <animated.group position={servicesSpring.position} className="flex flex-col" scale={ viewport.width < breakPoint ? viewport.width / breakPoint : 1 }>
       <directionalLight color="#305BF3" position={[0, 0, 5]} />
      
-      <Text position={[0,8,0]} color={'#305BF3'} anchorX="center" {...titleFontProps} >Servicios</Text>
+      <Text position={[0,8,0]} color={'#305BF3'} anchorX="center" {...titleFontProps}>{ text.title } </Text>
       
+
+      
+
+
       <group position={[0,-0.8,0]}>
-        <Text position={[-8,7,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Desarrollo web</Text>
-        <Text position={[-8,6.3,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Desarrollo de software personalizado</Text>
-        <Text position={[-8,5.6,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Integración de sistemas</Text>
-        <Text position={[-8,4.9,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Diseño UX-UI</Text>
-        <Text position={[-8,4.2,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Bots de análisis de datos</Text>
-        <Text position={[-8,3.5,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Automatización de marketing</Text>
-        <Text position={[-8,2.8,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Bots de servicio al cliente</Text>
-        <Text position={[-8,2.1,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps} >Bots basados en LLMs</Text>
+        {
+          servicesContent && servicesContent.map(
+            (data, i) => {
+              return(
+                <Text position={[-8,7 - i * 0.7,0]} scale={.5} color={'black'} anchorX="left" {...descriptionFontProps}>{ data }</Text>
+              );
+            }
+          )
+        }
       </group>
 
       <group position={[5.8, 0, -3]} rotation={[0,-0.5,0]} castShadow={true}>
