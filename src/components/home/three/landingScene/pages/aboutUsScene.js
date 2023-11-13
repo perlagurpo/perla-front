@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useThree } from "@react-three/fiber";
-import { useScroll, Text, Float } from "@react-three/drei";
+import { Text, Float } from "@react-three/drei";
 import { animated, useSpring } from "@react-spring/three";
 import * as THREE from 'three';
 
@@ -26,7 +26,7 @@ function AboutUsScene({ text, active }){
 
   const springs = useSpring({
     opacity: active ? 1 : 0,
-    position: active ? [0,0,0] : [15,0,0],
+    position: active ? (viewport.width > 10 ? [0,0,0] : [0,4,0]) : [15,0,0],
     config : {
       friction: 100,
       mass: 20,
