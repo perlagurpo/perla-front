@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useThree } from "@react-three/fiber";
 import { Text, Float } from "@react-three/drei";
 import { animated, useSpring } from "@react-spring/three";
@@ -16,6 +16,7 @@ function AboutUsScene({ text, active }){
   const subTitleFontProps = { font: '/fonts/made_tommy_soft/mts_Medium.otf', fontSize: 0.25, letterSpacing: 0.04, lineHeight: 1.1, 'material-toneMapped': false }
 
   const { viewport } = useThree();
+  const [vertical, setVertical] = useState(false);
 
   const ballSprings = useSpring({
     position: active ? [- viewport.width / 3 ,1.8,0] : [-20,1.8,0],
@@ -26,12 +27,15 @@ function AboutUsScene({ text, active }){
 
   const springs = useSpring({
     opacity: active ? 1 : 0,
-    position: active ? (viewport.width > 10 ? [0,0,0] : [0,4,0]) : [15,0,0],
+    position: active ? (viewport.width > 10 ? [0,0,0] : [0,3.3,0]) : [15,0,0],
+    scale: vertical ? viewport.width / 14 : (viewport.width < 17 ? viewport.width / 17 : 1),
     config : {
       friction: 100,
       mass: 20,
     }
   })
+  
+  useEffect(() => { setVertical(viewport.width < 10) },[viewport.width]);
 
   return(
     <group ref={sceneRef}>
@@ -47,18 +51,18 @@ function AboutUsScene({ text, active }){
         </Float>
       </animated.group>
       
-      <animated.group opacity={springs.opacity} position={springs.position} scale={ viewport.width < 17 ? viewport.width / 17 : 1}>
+      <animated.group opacity={springs.opacity} position={springs.position} scale={ springs.scale }>
         <group ref={textRef}>
-          <Text position={[2.3,6.5,4]} {...titleFontProps} scale={1} color="#305BF3">
+          <Text position={vertical ? [0,6.5,4] : [2.1,6.5,4]} {...titleFontProps} scale={1} color="#305BF3">
             {text.title}
           </Text>
-          <Text position={[3.1,5.5,4]} {...subTitleFontProps} scale={1} color="black">
+          <Text position={vertical ? [0,5.5,4] : [3.1,5.5,4]} {...subTitleFontProps} scale={1} color="black">
             {text.subtitle}
           </Text>
-          <Text position={[4,4,4]} {...descriptionFontProps} textAlign="right" maxWidth={8} scale={1} color="black">
+          <Text position={vertical ? [2, 4 - (10 - viewport.width) / 5 , 4] : [4,4,4]} {...descriptionFontProps} textAlign="right" maxWidth={8} scale={1} color="black">
             {text.desc1}
           </Text>
-          <Text position={[4,2,4]} {...descriptionFontProps} textAlign="right" maxWidth={8} scale={1} color="black">
+          <Text position={vertical ? [2, 2 - (10 - viewport.width) / 5 , 4] : [4,2,4]} {...descriptionFontProps} textAlign="right" maxWidth={8} scale={1} color="black">
             {text.desc2}
           </Text>
         </group>

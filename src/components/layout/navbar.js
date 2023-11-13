@@ -81,7 +81,7 @@ export default function Navbar() {
   }
 
   return(
-    <nav className={`sticky flex flex-col z-10 items-center bg-black font-['made-tommy-regular'] transition duration-500`} style={{ 'backgroundColor' : `rgba(0, 0, 0, ${ scroll > 0.02 ? '0' : '1' }`}}>
+    <nav className={`sticky flex flex-col z-10 items-center bg-black font-['made-tommy-regular'] transition duration-500`} style={{ 'backgroundColor' : menuOpened ? "#000000" : `rgba(0, 0, 0, ${ scroll > 0.02 ? '0' : '1' }`}}>
       <div className="min-w-full flex flex-row items-center justify-between py-2 md:px-[5em] lg:px-[12em]">
         <Link href="/" className="flex items-center">
           <img src="/img/perla.png" className="h-10 px-6" alt="Perla Labs" />
@@ -135,7 +135,8 @@ export default function Navbar() {
           
         </div>
 
-        <div className={`${ menuOpened ? "block" : "hidden"} w-full md:hidden`} onClick={() => setMenuOpened(false)}>
+      </div>
+      <div className={`${ menuOpened ? "block" : "hidden"} w-full md:hidden`} onClick={() => setMenuOpened(false)}>
           <ul className="flex flex-col text-center p-4 text-lg font-medium">
             <li>
               <Link href="/" className="block py-2 pl-3 pr-4 rounded md:border-0 md:p-0">
@@ -155,8 +156,6 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-
-      </div>
     </nav>
   );
 }
