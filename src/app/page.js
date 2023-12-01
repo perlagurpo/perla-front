@@ -6,6 +6,11 @@ import LandingScene from '@/components/home/three/landingScene/LandingScene';
 import ContactSection from '@/components/home/htmlLayout/contactSection';
 import EnConstruccion from '@/components/home/three/landingScene/en-construccion/landingReducida';
 
+/**
+ * 
+ * Versión placeholder mientras terminamos la otra 
+ * 
+ */
 export default function Home() {
   const canvasTextContent = useSelector((state) => state.lang.content.canvas);
 
