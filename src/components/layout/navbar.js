@@ -105,7 +105,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="block py-2  rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
+              <Link href='mailto:grupo.perla.software@gmail.com' className="block py-2  rounded md:border-0 md:hover:text-perla-primary md:p-0 transition duration-500">
                 { content["navbar"].contact }
               </Link>
             </li>
