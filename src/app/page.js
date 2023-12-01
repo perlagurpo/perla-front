@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import { useSelector } from 'react-redux';
 import LandingScene from '@/components/home/three/landingScene/LandingScene';
 import ContactSection from '@/components/home/htmlLayout/contactSection';
+import EnConstruccion from '@/components/home/three/landingScene/en-construccion/landingReducida';
 
 export default function Home() {
   const canvasTextContent = useSelector((state) => state.lang.content.canvas);
@@ -21,13 +22,13 @@ export default function Home() {
          */}
         <Suspense fallback={<h2>Cargando</h2>} className="z-4">
           <Canvas orthographic={true} camera={{ zoom: 90, position: [0,2,10], rotation: [-0.3,0,0] }}>
-            <LandingScene textContent={canvasTextContent} />
+            <EnConstruccion textContent={canvasTextContent} />
             {/* <axesHelper /> */}
             
           </Canvas>
         </Suspense>
       </div>
-      <ContactSection />
+      {/* <ContactSection /> */}
     </main>
   )
 }
